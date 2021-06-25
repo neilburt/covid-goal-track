@@ -2126,10 +2126,68 @@ function zipLookup(){
         console.log(countyData.county);
 
         var zipDisplay = document.getElementById('main');
+        
         var countyDisplayTag = document.createElement('h2');
         var countyDisplayText = document.createTextNode(countyData.county);
         countyDisplayTag.appendChild(countyDisplayText);
         zipDisplay.appendChild(countyDisplayTag);
+
+        var deathsTag = document.createElement('p');
+        var deathsText = document.createTextNode("Deaths: "+countyData.actuals.deaths)
+        deathsTag.appendChild(deathsText);
+        zipDisplay.appendChild(deathsTag);
+
+        var casesTag = document.createElement('p');
+        var casesText = document.createTextNode("Cases: "+countyData.actuals.cases);
+        casesTag.appendChild(casesText);
+        zipDisplay.appendChild(casesTag);
+
+        var percentage = countyData.metrics.vaccinationsInitiatedRatio*100+"%"
+        var pctInitTag = document.createElement('p');
+        var pctInitText = document.createTextNode("Percent initiated: "+percentage);
+        pctInitTag.appendChild(pctInitText);
+        zipDisplay.appendChild(pctInitTag);
+
+        var percent2 = (countyData.metrics.vaccinationsCompletedRatio*100).toFixed(1);
+        // percentPass = percent2*100+"%";
+        var pctCompTag = document.createElement('p');
+        var pctCompText = document.createTextNode("Percent completed: "+percent2+"%");
+        pctCompTag.appendChild(pctCompText);
+        zipDisplay.appendChild(pctCompTag);
+
+        var remainderPopPctLong = .7-countyData.metrics.vaccinationsInitiatedRatio
+        var countyPop = countyData.population;
+        remainderValue = remainderPopPctLong*countyPop;
+        console.log(remainderValue);
+        vacsLeft = remainderValue.toFixed(0);
+
+        var intTag = document.createElement('h3');
+        var intText = document.createTextNode(vacsLeft+" people in "+countyData.county+" remain to be vaccinated by the 4th to meet the presidential goal.");
+        intTag.appendChild(intText);
+        zipDisplay.appendChild(intTag);
+
+        var formDiv = document.createElement('form');
+        zipDisplay.appendChild(formDiv);
+        
+        var promptTag = document.createElement('h3');
+        var promptText = document.createTextNode('Have you already completed your COVID-19 vaccination?')
+        promptTag.appendChild(promptText);
+        formDiv.appendChild(promptTag);
+        
+        var yesButton = document.createElement('input');
+        yesButton.setAttribute('type','button');
+        yesButton.setAttribute('id','yesbutton');
+        yesButton.addEventListener("click",yesResponse);
+        yesButton.setAttribute('value','YES');
+        formDiv.appendChild(yesButton);
+
+        var noButton = document.createElement('input');
+        noButton.setAttribute('type','button');
+        noButton.setAttribute('id','nobutton');
+        noButton.addEventListener('click',noResponse);
+        noButton.setAttribute('value','NO');
+        formDiv.appendChild(noButton);
+
 })
    
 }

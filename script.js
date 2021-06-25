@@ -2,6 +2,7 @@ var stateCounts =[];
 var statesTotal =0;
 const apiKey = "";
 var indexNum = 1400
+var zipGlobal;
 
 function landingScreen(){
     var container = document.getElementById('main');
@@ -10,30 +11,10 @@ function landingScreen(){
     landscreenHeadTag.appendChild(landscreenHeadText);
     container.appendChild(landscreenHeadTag);
 
-    
-
     getApiState();
 }
 
 landingScreen();
-
-function getApiCounty() {
-//   let searchEntry = $('#search-field').val();
-  let requestUrl = `https://api.covidactnow.org/v2/counties.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
-  fetch(requestUrl)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data)
-        for (var i=1314; i<indexNum+1; i++){
-            // console.log(data[i]);
-            
-         }
-
-     })
-    
- }
 
 function getApiState() {
     //   let searchEntry = $('#search-field').val();
@@ -43,7 +24,7 @@ function getApiState() {
           return response.json();
         })
         .then(function(data) {
-          // console.log(data)
+          console.log(data)
             for (var i=0; i<53; i++){
                 // console.log(data[i]);
                 statesTotal += data[i].actuals.vaccinationsCompleted
@@ -59,7 +40,7 @@ function getApiState() {
                 var displayTest = document.getElementById('main');
                 
                 var blurbTag = document.createElement('p');
-                var blurbText = document.createTextNode('The president said some shit.');
+                var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At the current rate of vaccinations being administered, the country will fall slightly short of this goal. To enjoy a summer of closeness with one another amid the rise of the Delta variant, states around the country are campaigning to get as many people vaccinated as quickly as possible. This API will track the number of vaccinations being administered throughout Minnesota daily.');
                 blurbTag.appendChild(blurbText);
                 
                 var p1Tag = document.createElement('p');
@@ -120,20 +101,80 @@ function loadForm(){
     formContainer.appendChild(formtextTag);
     formContainer.appendChild(formDeclare);
 
-    getApiCounty();
+   
 }
 
 function submitZIP(){
   var zipInput = document.getElementById('zipInput');
+  zipGlobal = zipInput.value;
   var userZIP = zipInput.value;
   console.log(userZIP);
   zipInput.value ="";
 
   var formAdd = document.getElementById('main');
+  formAdd.innerHTML="";
+
   var h1Tag = document.createElement('h1');
   h1Tag.setAttribute('id','zipLoad');
   var h1Text = document.createTextNode(userZIP);
   h1Tag.appendChild(h1Text);
   formAdd.appendChild(h1Tag);
   zipLookup();
+}
+
+function yesResponse(){
+  console.log("Yes response recorded.")
+  
+  var userZip = document.getElementById('zipInput');
+  console.log(userZip);
+  var containerF = document.getElementById('main');
+  containerF.innerHTML ="";
+
+  var yesLandingTag = document.createElement('h1')
+  var yesLandingText = document.createTextNode("Word? Nice! Thanks a million! Ohio State Delenda Est!");
+  yesLandingTag.appendChild(yesLandingText);
+  containerF.appendChild(yesLandingTag);
+
+  var linkIntroTag = document.createElement('p');
+  var linkIntroText = document.createTextNode('Minnesota offers a variety of incentives for resident vaccinations. Claim yours today at:')
+  linkIntroTag.appendChild(linkIntroText);
+  containerF.appendChild(linkIntroTag);
+
+  var linkTag = document.createElement('a');
+  linkTag.setAttribute('href','https://mn.gov/covid19/vaccine-rewards/index.jsp');
+  var linkText = document.createTextNode('https://mn.gov/covid19/vaccine-rewards/index.jsp');
+  linkTag.appendChild(linkText);
+  containerF.appendChild(linkTag);
+
+  let request4 = `https://api.openbrewerydb.org/breweries?by_postal=${userZip}`;
+  fetch(request4)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    console.log(data);
+  })
+
+}
+
+function noResponse(){
+  console.log(zipGlobal);
+  let request5 = `https://app.zipcodebase.com/api/v1/radius?apikey=1578b6e0-d5ef-11eb-b9b2-2b8eceeea297&code=${zipGlobal}&radius=20&country=us&unit=miles`;
+  fetch(request5)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    console.log(data);
+    var beerList = data.results;
+    console.log(beerList);
+    for(var i=0; i<beerList.length; i++){
+      console.log(beerList[i].code);
+      
+    }
+  })
+
+  
+
+
 }
