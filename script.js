@@ -1,8 +1,8 @@
 var stateCounts =[];
 var statesTotal =0;
-
 const apiKey = "";
 var indexNum = 1400
+
 
 function landingScreen(){
     var container = document.getElementById('main');
@@ -102,7 +102,7 @@ function getApiState() {
                 mainScreen.appendChild(increaseTag);
                 mainScreen.appendChild(delendaTag);
                 loadForm();
-            })
+        })
 }
 
 function loadForm(){
@@ -114,12 +114,14 @@ function loadForm(){
     var zipEntry = document.createElement('input');
     zipEntry.setAttribute('type','text');
     zipEntry.setAttribute('maxLength',5);
+    zipEntry.setAttribute('id','zipInput')
     var submitButton = document.createElement('input');
     submitButton.setAttribute('type','button');
     submitButton.setAttribute('id', 'code');
     submitButton.setAttribute('cols',10);
     submitButton.setAttribute('rows',1);
     submitButton.setAttribute('value','submit');
+    submitButton.addEventListener("click",submitZIP);
     formDeclare.appendChild(zipEntry);
     formDeclare.appendChild(submitButton);
     formContainer.appendChild(formtextTag);
@@ -128,3 +130,17 @@ function loadForm(){
     getApiCounty();
 }
 
+function submitZIP(){
+  var zipInput = document.getElementById('zipInput');
+  var userZIP = zipInput.value;
+  console.log(userZIP);
+  zipInput.value ="";
+
+  var formAdd = document.getElementById('main');
+  var h1Tag = document.createElement('h1');
+  h1Tag.setAttribute('id','zipLoad');
+  var h1Text = document.createTextNode(userZIP);
+  h1Tag.appendChild(h1Text);
+  formAdd.appendChild(h1Tag);
+  zipLookup();
+}
