@@ -3,7 +3,6 @@ var statesTotal =0;
 const apiKey = "";
 var indexNum = 1400
 
-
 function landingScreen(){
     var container = document.getElementById('main');
     var landscreenHeadTag = document.createElement('h2');
@@ -18,8 +17,6 @@ function landingScreen(){
 
 landingScreen();
 
-
-
 function getApiCounty() {
 //   let searchEntry = $('#search-field').val();
   let requestUrl = `https://api.covidactnow.org/v2/counties.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
@@ -30,15 +27,13 @@ function getApiCounty() {
     .then(function(data) {
       console.log(data)
         for (var i=1314; i<indexNum+1; i++){
-            console.log(data[i]);
+            // console.log(data[i]);
             
-        }
+         }
 
-    })
+     })
     
-}
-
-
+ }
 
 function getApiState() {
     //   let searchEntry = $('#search-field').val();
@@ -48,26 +43,24 @@ function getApiState() {
           return response.json();
         })
         .then(function(data) {
-          console.log(data)
+          // console.log(data)
             for (var i=0; i<53; i++){
-                console.log(data[i]);
+                // console.log(data[i]);
                 statesTotal += data[i].actuals.vaccinationsCompleted
-                console.log(statesTotal);
+                // console.log(statesTotal);
                 }
 
                 var pctCalc = (statesTotal/331000000)*100;
-                console.log(pctCalc);
+                // console.log(pctCalc);
 
                 var totalUS = Math.round(pctCalc);
-                console.log(totalUS);
+                // console.log(totalUS);
 
                 var displayTest = document.getElementById('main');
                 
                 var blurbTag = document.createElement('p');
                 var blurbText = document.createTextNode('The president said some shit.');
                 blurbTag.appendChild(blurbText);
-                
-                
                 
                 var p1Tag = document.createElement('p');
                 var p1Text =document.createTextNode("Currently, "+totalUS+" percent of Americans are vaccinated. And ugly.");
