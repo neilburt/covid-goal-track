@@ -3,6 +3,7 @@ var statesTotal =0;
 const apiKey = "";
 var indexNum = 1400
 var zipGlobal;
+var zipList;
 
 function landingScreen(){
     var container = document.getElementById('main');
@@ -26,9 +27,7 @@ function getApiState() {
         .then(function(data) {
           console.log(data)
             for (var i=0; i<53; i++){
-                // console.log(data[i]);
                 statesTotal += data[i].actuals.vaccinationsCompleted
-                // console.log(statesTotal);
                 }
 
                 var pctCalc = (statesTotal/331000000)*100;
@@ -40,40 +39,27 @@ function getApiState() {
                 var displayTest = document.getElementById('main');
                 
                 var blurbTag = document.createElement('p');
-                var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At the current rate of vaccinations being administered, the country will fall slightly short of this goal. To enjoy a summer of closeness with one another amid the rise of the Delta variant, states around the country are campaigning to get as many people vaccinated as quickly as possible. This API will track the number of vaccinations being administered throughout Minnesota daily.');
+                var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At our  current rate of vaccination, we will fall slightly short of this goal; those of us who want to make 2021 a summer of closeness even amid the rise of the Delta variant better campaign to get as many people vaccinated as quickly as possible.');
                 blurbTag.appendChild(blurbText);
                 
-                var p1Tag = document.createElement('p');
-                var p1Text =document.createTextNode("Currently, "+totalUS+" percent of Americans are vaccinated. And ugly.");
-                p1Tag.appendChild(p1Text);
-
                 var shortfall = 160000000-statesTotal
                 var totalShare = shortfall*0.017047322;
                 
                 var totalShareRound = Math.round(totalShare);
                 var totalShareRoundCommas = Math.round(totalShareRound);
 
-                var infoTag = document.createElement('p');
-                var infoText = document.createTextNode(shortfall+" Americans need to be vaccinated by the 4th or President Biden will cry. And he's such a sweet old guy; what is WRONG with you?");
-                infoTag.appendChild(infoText);
-
-                var increaseTag = document.createElement('p');
-                var increaseText = document.createTextNode("Minnesota's share of this total is "+totalShareRound+" people.");
-                increaseTag.appendChild(increaseText);
+                var p1Tag = document.createElement('p');
+                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So, "+totalShareRound+" Minnesotans need to show their dumb faces at a vaccination site TUT SUITE or we'll have to eat a share of the blame for whatever discrace befalls us as a result.");
+                p1Tag.appendChild(p1Text);
 
                 var delendaTag = document.createElement('p');
                 var delendaText = document.createTextNode("(Ohio must be destroyed, and Urban Meyer is a cunt. Flush twice: it is a LOOOONG way to Columbus.)");
                 delendaTag.appendChild(delendaText);
 
-                infoTag.appendChild(infoText);
-                increaseTag.appendChild(increaseText);
-
                 var mainScreen = document.getElementById('main');
 
                 mainScreen.appendChild(blurbTag);
                 mainScreen.appendChild(p1Tag);
-                mainScreen.appendChild(infoTag);
-                mainScreen.appendChild(increaseTag);
                 mainScreen.appendChild(delendaTag);
                 loadForm();
         })
@@ -99,9 +85,7 @@ function loadForm(){
     formDeclare.appendChild(zipEntry);
     formDeclare.appendChild(submitButton);
     formContainer.appendChild(formtextTag);
-    formContainer.appendChild(formDeclare);
-
-   
+    formContainer.appendChild(formDeclare);   
 }
 
 function submitZIP(){
@@ -146,20 +130,22 @@ function yesResponse(){
   linkTag.appendChild(linkText);
   containerF.appendChild(linkTag);
 
-  let request4 = `https://api.openbrewerydb.org/breweries?by_postal=${userZip}`;
-  fetch(request4)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data){
-    console.log(data);
-  })
+  // let request4 = `https://api.openbrewerydb.org/breweries?by_postal=${userZip}`;
+  // fetch(request4)
+  // .then(function(response){
+  //   return response.json();
+  // })
+  // .then(function(data){
+  //   console.log(data);
+  }
 
-}
+
 
 function noResponse(){
-  console.log(zipGlobal);
-  let request5 = `https://app.zipcodebase.com/api/v1/radius?apikey=1578b6e0-d5ef-11eb-b9b2-2b8eceeea297&code=${zipGlobal}&radius=20&country=us&unit=miles`;
+  var main = document.getElementById('main');
+  main.innerHTML ="";
+  console.log("zipGlobal: "+zipGlobal);
+  let request5 = `https://app.zipcodebase.com/api/v1/radius?apikey=1578b6e0-d5ef-11eb-b9b2-2b8eceeea297&code=${zipGlobal}&radius=5&country=us&unit=miles`;
   fetch(request5)
   .then(function(response){
     return response.json();
@@ -168,13 +154,54 @@ function noResponse(){
     console.log(data);
     var beerList = data.results;
     console.log(beerList);
+    console.log(data.results);
+    
+    
     for(var i=0; i<beerList.length; i++){
       console.log(beerList[i].code);
-      
+      zipList = data.results[i].code;
+      console.log("zipList= "+zipList);
+      let request6 = `https://api.openbrewerydb.org/breweries?by_postal=${zipList}`;
+      console.log(request6);
+      fetch(request6)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(data){
+        console.log("Here is the data:");
+        console.log(data);
+        
+        for(let i=0; i<data.length; i++){
+          var brewerDivTag = document.createElement('div');
+          brewerDivTag.setAttribute('class',"brewerCard");
+          main.appendChild(brewerDivTag);
+          
+          var brewerHeadTag = document.createElement('h3');
+          var brewerHeadText = document.createTextNode(data[i].name);
+          brewerHeadTag.appendChild(brewerHeadText);
+          brewerDivTag.appendChild(brewerHeadTag);
+
+          var brewerStreetTag = document.createElement('p');
+          var brewerStreetText = document.createTextNode(data[i].street);
+          brewerStreetTag.appendChild(brewerStreetText);
+          brewerDivTag.appendChild(brewerStreetTag);
+
+          var brewerCityTag = document.createElement('p');
+          var brewerCityText = document.createTextNode(data[i].city);
+          brewerCityTag.appendChild(brewerCityText);
+          brewerDivTag.appendChild(brewerCityTag);
+
+          var brewerPhoneTag = document.createElement('p');
+          var brewerPhoneText = document.createTextNode(data[i].phone);
+          brewerPhoneTag.appendChild(brewerPhoneText);
+          brewerDivTag.appendChild(brewerPhoneTag);
+
+          var brewerUrlTag = document.createElement('p');
+          var brewerUrlText = document.createTextNode(data[i].website_url);
+          brewerUrlTag.appendChild(brewerUrlText);
+          brewerDivTag.appendChild(brewerUrlTag);
+        }
+      })
     }
   })
-
-  
-
-
 }
