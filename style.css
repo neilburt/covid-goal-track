@@ -1,0 +1,20 @@
+.brewerCard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 23rem;
+    background-image: linear-gradient(to right, yellow, red);
+    border-style: solid;
+    border-color: salmon;
+    font-weight: bold;
+    padding-left: 1rem;
+}
+#main {
+    position: relative;
+    display: flex;
+}
+@media (max-width: 600px) {
+    .brewerCard {
+        display: block;
+    }
+}

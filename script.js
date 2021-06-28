@@ -130,16 +130,9 @@ function yesResponse(){
   linkTag.appendChild(linkText);
   containerF.appendChild(linkTag);
 
-  // let request4 = `https://api.openbrewerydb.org/breweries?by_postal=${userZip}`;
-  // fetch(request4)
-  // .then(function(response){
-  //   return response.json();
-  // })
-  // .then(function(data){
-  //   console.log(data);
-  }
-
-
+  var questionTag = document.createElement('h2');
+  var questionText = document.createTextNode('')
+}
 
 function noResponse(){
   var main = document.getElementById('main');
@@ -155,7 +148,6 @@ function noResponse(){
     var beerList = data.results;
     console.log(beerList);
     console.log(data.results);
-    
     
     for(var i=0; i<beerList.length; i++){
       console.log(beerList[i].code);
@@ -196,10 +188,15 @@ function noResponse(){
           brewerPhoneTag.appendChild(brewerPhoneText);
           brewerDivTag.appendChild(brewerPhoneTag);
 
+          // var linkTag = document.createElement('a');
           var brewerUrlTag = document.createElement('p');
           var brewerUrlText = document.createTextNode(data[i].website_url);
           brewerUrlTag.appendChild(brewerUrlText);
-          brewerDivTag.appendChild(brewerUrlTag);
+          linkTag.setAttribute('value', `"${data[i].website_url}"`);
+          console.log(linkTag.value);
+          linkTag.appendChild(brewerUrlTag);
+          
+          
         }
       })
     }
