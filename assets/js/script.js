@@ -153,6 +153,7 @@ function noResponse(){
       console.log(beerList[i].code);
       zipList = data.results[i].code;
       console.log("zipList= "+zipList);
+      
       let request6 = `https://api.openbrewerydb.org/breweries?by_postal=${zipList}`;
       console.log(request6);
       fetch(request6)
@@ -164,38 +165,44 @@ function noResponse(){
         console.log(data);
         
         for(let i=0; i<data.length; i++){
-          var brewerDivTag = document.createElement('div');
-          brewerDivTag.setAttribute('class',"brewerCard");
-          main.appendChild(brewerDivTag);
-          
-          var brewerHeadTag = document.createElement('h3');
-          var brewerHeadText = document.createTextNode(data[i].name);
-          brewerHeadTag.appendChild(brewerHeadText);
-          brewerDivTag.appendChild(brewerHeadTag);
 
-          var brewerStreetTag = document.createElement('p');
-          var brewerStreetText = document.createTextNode(data[i].street);
-          brewerStreetTag.appendChild(brewerStreetText);
-          brewerDivTag.appendChild(brewerStreetTag);
+          if (data[i] == null){
+            break;
+          }else{
+            var brewerDivTag = document.createElement('div');
+            brewerDivTag.setAttribute('class',"brewerCard");
+            main.appendChild(brewerDivTag);
+            
+            var brewerHeadTag = document.createElement('h3');
+            var brewerHeadText = document.createTextNode(data[i].name);
+            brewerHeadTag.appendChild(brewerHeadText);
+            brewerDivTag.appendChild(brewerHeadTag);
 
-          var brewerCityTag = document.createElement('p');
-          var brewerCityText = document.createTextNode(data[i].city);
-          brewerCityTag.appendChild(brewerCityText);
-          brewerDivTag.appendChild(brewerCityTag);
+            var brewerStreetTag = document.createElement('p');
+            var brewerStreetText = document.createTextNode(data[i].street);
+            brewerStreetTag.appendChild(brewerStreetText);
+            brewerDivTag.appendChild(brewerStreetTag);
 
-          var brewerPhoneTag = document.createElement('p');
-          var brewerPhoneText = document.createTextNode(data[i].phone);
-          brewerPhoneTag.appendChild(brewerPhoneText);
-          brewerDivTag.appendChild(brewerPhoneTag);
+            var brewerCityTag = document.createElement('p');
+            var brewerCityText = document.createTextNode(data[i].city);
+            brewerCityTag.appendChild(brewerCityText);
+            brewerDivTag.appendChild(brewerCityTag);
 
-          // var linkTag = document.createElement('a');
-          var brewerUrlTag = document.createElement('p');
-          var brewerUrlText = document.createTextNode(data[i].website_url);
-          brewerUrlTag.appendChild(brewerUrlText);
-          linkTag.setAttribute('value', `"${data[i].website_url}"`);
-          console.log(linkTag.value);
-          linkTag.appendChild(brewerUrlTag);
-          
+            var brewerPhoneTag = document.createElement('p');
+            var brewerPhoneText = document.createTextNode(data[i].phone);
+            brewerPhoneTag.appendChild(brewerPhoneText);
+            brewerDivTag.appendChild(brewerPhoneTag);
+
+            var linkTag = document.createElement('a');
+            var brewerUrlTag = document.createElement('p');
+            var brewerUrlText = document.createTextNode(data[i].website_url);
+            brewerUrlTag.appendChild(brewerUrlText);
+            linkTag.setAttribute('value', `"${data[i].website_url}"`);
+            linkTag.setAttribute('href',`"${data[i].website_url}"`)
+            console.log(linkTag.value);
+            linkTag.appendChild(brewerUrlTag);
+            brewerDivTag.appendChild(linkTag);
+          }
           
         }
       })
