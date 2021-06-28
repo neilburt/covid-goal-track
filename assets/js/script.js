@@ -82,9 +82,9 @@ function loadForm(){
     submitButton.setAttribute('rows',1);
     submitButton.setAttribute('value','submit');
     submitButton.addEventListener("click",submitZIP);
+    formDeclare.appendChild(formtextTag);
     formDeclare.appendChild(zipEntry);
     formDeclare.appendChild(submitButton);
-    formContainer.appendChild(formtextTag);
     formContainer.appendChild(formDeclare);   
 }
 
@@ -115,7 +115,8 @@ function yesResponse(){
   containerF.innerHTML ="";
 
   var yesLandingTag = document.createElement('h1')
-  var yesLandingText = document.createTextNode("Word? Nice! Thanks a million! Ohio State Delenda Est!");
+  var yesLandingText = document.createTextNode("Word? Nice! Thanks for being part of the solution!");
+  console.log("Ohio State Delenda Est!");
   yesLandingTag.appendChild(yesLandingText);
   containerF.appendChild(yesLandingTag);
 
@@ -131,13 +132,172 @@ function yesResponse(){
   containerF.appendChild(linkTag);
 
   var questionTag = document.createElement('h2');
-  var questionText = document.createTextNode('')
+  var questionText = document.createTextNode('...Like a beer, do you?')
+  questionTag.appendChild(questionText);
+  containerF.appendChild(questionTag);
+
+  var buttonContainer = document.createElement('form');
+  buttonContainer.setAttribute('id','buttoncontainer');
+  var yesButton = document.createElement('input');
+  yesButton.setAttribute('type','button');
+  yesButton.setAttribute('value','Sure I do.');
+  yesButton.addEventListener("click", yesilikeabeer);
+
+  var noButton = document.createElement('input');
+  noButton.setAttribute('type','button');
+  noButton.setAttribute('value','Not Particularly...');
+  noButton.addEventListener("click", nahbeerznasty);
+
+  buttonContainer.appendChild(yesButton);
+  buttonContainer.appendChild(noButton);
+  containerF.appendChild(buttonContainer);
+
 }
 
 function noResponse(){
   var main = document.getElementById('main');
-  main.innerHTML ="";
-  console.log("zipGlobal: "+zipGlobal);
+  main.innerHTML = "";
+  var header = document.createElement('div');
+  header.setAttribute('id','header');
+
+  var titleTag = document.createElement('h1');
+  var titleText = document.createTextNode('Seriously? Well, same to you!');
+
+  titleTag.appendChild(titleText);
+  main.appendChild(titleTag);
+
+  var introTag = document.createElement('h4');
+  var introText = document.createTextNode("That's not too cool, brutha'. In the name of citizenship, good taste, and the memory of the late great Herman Cain, you really ought to reconsider this particular life choice you've made. ");
+  introTag.appendChild(introText);
+  main.appendChild(introTag);
+
+  var introTag2 = document.createElement('p');
+  var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd needed to have made this choice differntly.");
+  introTag2.appendChild(introText2);
+  main.appendChild(introTag2);
+
+  var introTag3 = document.createElement('p');
+  var introText3 = document.createTextNode("Here are some links answering questions commonly posed by others who have chosen as you have:");
+  introTag3.appendChild(introText3);
+  main.appendChild(introTag3);
+
+  var link1Tag = document.createElement('h2');
+  var link1Text = document.createTextNode("Are vaccines safe?");
+  link1Tag.appendChild(link1Text);
+  main.appendChild(link1Tag);
+
+  var linkAnchorTag = document.createElement('a');
+  linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
+  var linkAnchorText = document.createTextNode('[External Link]');
+  linkAnchorTag.appendChild(linkAnchorText);
+  main.appendChild(linkAnchorTag);
+
+  var link2Tag = document.createElement('h2');
+  var link2Text = document.createTextNode("Is Alex Jones full of shit?");
+  link2Tag.appendChild(link2Text);
+  main.appendChild(link2Tag);
+
+  var linkAnchorTag2 = document.createElement('a');
+  linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
+  var linkAnchorText2 = document.createTextNode('[External Link]');
+  linkAnchorTag2.appendChild(linkAnchorText2);
+  main.appendChild(linkAnchorTag2);
+
+  var link3Tag = document.createElement('h2');
+  var link3Text = document.createTextNode("How many people have actually died from this thing?");
+  link3Tag.appendChild(link3Text);
+  main.appendChild(link3Tag);
+
+  var linkAnchorTag3 = document.createElement('a');
+  linkAnchorTag3.setAttribute('href','https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
+  var linkAnchorText3 = document.createTextNode('[External Link]');
+  linkAnchorTag3.appendChild(linkAnchorText3);
+  main.appendChild(linkAnchorTag3);
+  dunkOnyaJethro()
+}
+
+function dunkOnyaJethro(){
+  //a period of five seconds should elapse; then, display 
+  var randomString = [
+    {
+      number: 1,
+      reply: "; your mother was a hamster, and your father smelt of elberberries."
+    },  
+    {
+      number: 2,
+      reply: ", 'cause vaccinated people's dicks so hot they stolen - yo dick look just like Gary Coleman."
+    },
+    {
+      number: 3,
+      reply: ". I also heard that Yo mama's so poor, the ducks throw bread at her."
+    },
+    {
+      number: 4,
+      reply: ", unless you're fine with going through the whole rotten thing dragging your knuckles around everywhere with you."
+    },
+    {
+      number: 5,
+      reply: ", and it's real messed up that yo mama so fat, when she cosplayed as Maleficent dudes thought she was tryna' be Ursula."
+    },
+    {
+      number: 6,
+      reply: " - hard to expect better from someone whose mama so fat, it take her two hours to watch 60 Minutes."
+    },
+    {
+      number: 7,
+      reply: ". Know what else, Jethro? Yo mama so broke, Nigerian princes be sending HER money."
+    },
+    {
+      number: 8,
+      reply: ", and if you can't behave yourself any better than that you'd be well-advised to start wearing a bicycle helmet anytime you're out in public."
+    },
+    {
+      number: 9,
+      reply: ", and I envy people who never have to meet you."
+    },
+    {
+      number: 10,
+      reply: "; you are just impossible to underestimate, it seems - even if you were a potato, mahfs'd still be like, 'there go one dumb-ass potato'."
+    },
+    {
+      number: 11,
+      reply: ". You resemble Rapunzel a bit, in that where she lets down her hair, you let down everyone you ever meet EVER."
+    }
+  ]
+
+  for(i=0; i<dunkOnyaJethro.length-1; i++){
+    var index=Math.floor(Math.random() * dunkOnyaJethro.length);
+}
+
+
+  var dunkTag = document.createElement('h2');
+  var dunkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+randomString);
+  link3Tag.appendChild(link3Text);
+  main.appendChild(link3Tag);
+
+}
+
+function yesilikeabeer(){
+  var main = document.getElementById('main');
+  main.innerHTML = "";
+  var header = document.createElement('div');
+  header.setAttribute('id','header');
+
+  var titleTag = document.createElement('h1');
+  var titleText = document.createTextNode('...well, of COURSE you like a beer!')
+
+  titleTag.appendChild(titleText);
+  main.appendChild(titleTag);
+
+  var introTag = document.createElement('h4');
+  var introText = document.createTextNode('Cheers to you! Congratulate yourself on your citizenship at one of these fine Minnesota breweries - all within 5 miles of your ZIP!');
+  introTag.appendChild(introText);
+  main.appendChild(introTag);
+
+  var cardDisplay = document.createElement('div');
+  cardDisplay.setAttribute('id','cardContainer');
+  main.appendChild(cardDisplay);
+
   let request5 = `https://app.zipcodebase.com/api/v1/radius?apikey=1578b6e0-d5ef-11eb-b9b2-2b8eceeea297&code=${zipGlobal}&radius=5&country=us&unit=miles`;
   fetch(request5)
   .then(function(response){
@@ -171,7 +331,7 @@ function noResponse(){
           }else{
             var brewerDivTag = document.createElement('div');
             brewerDivTag.setAttribute('class',"brewerCard");
-            main.appendChild(brewerDivTag);
+            cardDisplay.appendChild(brewerDivTag);
             
             var brewerHeadTag = document.createElement('h3');
             var brewerHeadText = document.createTextNode(data[i].name);
@@ -208,4 +368,41 @@ function noResponse(){
       })
     }
   })
+}
+
+function nahbeerznasty(){
+  var container = document.getElementById('main');
+  container.innerHTML = "";
+
+  var header = document.createElement('div');
+  header.setAttribute('id','header');
+
+  var titleTag = document.createElement('h1');
+  var titleText = document.createTextNode("Don't like beer, eh?");
+
+  titleTag.appendChild(titleText);
+  main.appendChild(titleTag);
+
+  var introTag = document.createElement('h4');
+  var introText = document.createTextNode("It's cool; there's all kinds of stuff to do this summer in Minnesota; this is a cool place. Here's some examples: ");
+  introTag.appendChild(introText);
+  main.appendChild(introTag);
+
+  var linkTag = document.createElement('a');
+  
+  linkTag.setAttribute("value", "https://www.atlasobscura.com/things-to-do/minnesota");
+  
+  linkTag.setAttribute('href','');
+  main.appendChild(linkTag);
+
+  // linkTag.setAttribute('value', `"${data[i].website_url}"`);
+  // linkTag.setAttribute('href',`"${data[i].website_url}"`)
+  
+  linkTag.setAttribute('href','https://www.atlasobscura.com/things-to-do/minnesota');
+  var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
+  linkTag.appendChild(linkText);
+  main.appendChild(linkTag);
+
+  
+
 }
