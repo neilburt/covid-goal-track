@@ -147,7 +147,6 @@ function yesResponse(){
   buttonContainer.appendChild(yesButton);
   buttonContainer.appendChild(noButton);
   containerF.appendChild(buttonContainer);
-
 }
 
 function noResponse(){
@@ -162,22 +161,26 @@ function noResponse(){
   titleTag.setAttribute('class', 'badHeader');
   main.appendChild(titleTag);
 
+  var divSwitcher = document.createElement('div');
+  divSwitcher.setAttribute('id','videoswitcher');
+  main.appendChild(divSwitcher);
+  
   var introTag = document.createElement('h4');
   var introText = document.createTextNode("That's not too cool, brutha'. In the name of citizenship, good taste, and the memory of the late great Herman Cain, you really ought to reconsider this particular life choice you've made. ");
   introTag.appendChild(introText);
   introTag.setAttribute('class', 'badText');
-  main.appendChild(introTag);
+  divSwitcher.appendChild(introTag);
 
   var introTag2 = document.createElement('p');
-  var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd needed to have made this choice differntly.");
+  var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd need to have made this choice differntly.");
   introTag2.appendChild(introText2);
   introTag2.setAttribute('class', 'badText');
-  main.appendChild(introTag2);
+  divSwitcher.appendChild(introTag2);
 
   var linkAnchorTag = document.createElement('a');
   linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
   linkAnchorTag.setAttribute('class','infoLinx');
-  main.appendChild(linkAnchorTag);
+  divSwitcher.appendChild(linkAnchorTag);
   var link1Tag = document.createElement('h2');
   var link1Text = document.createTextNode("Are vaccines safe?");
   link1Tag.appendChild(link1Text);
@@ -186,7 +189,7 @@ function noResponse(){
   var linkAnchorTag2 = document.createElement('a');
   linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
   linkAnchorTag2.setAttribute('class','infoLinx');
-  main.appendChild(linkAnchorTag2);
+  divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
   var link2Text = document.createTextNode("Is Alex Jones full of shit?");
   link2Tag.appendChild(link2Text);
@@ -195,7 +198,7 @@ function noResponse(){
   var linkAnchorTag3 = document.createElement('a');
   linkAnchorTag3.setAttribute('href','https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
   linkAnchorTag3.setAttribute('class','infoLinx');
-  main.appendChild(linkAnchorTag3);
+  divSwitcher.appendChild(linkAnchorTag3);
   var link3Tag = document.createElement('h2');
   var link3Text = document.createTextNode("How many people have actually died from this thing?");
   link3Tag.appendChild(link3Text);
@@ -252,7 +255,7 @@ function dunkOnyaJethro(){
     },
     {
       textInd: 12,
-      burn: "if you honestly think this kind of thing is going to fly; you're a realjerk, and you smell like farts."
+      burn: " if you honestly think this kind of thing is going to fly; you're a real jerk, and you smell like farts."
     },
     {
       textInd: 11,
@@ -305,6 +308,7 @@ function setTime2() {
 function sendMessage() {
   console.log("Begin Sendmessage");
   var main = document.getElementById("main");
+  var divSwitcher = document.getElementById('divSwitcher');
   var eatItJerkTag = document.createElement("h3");
   var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+insultSelect);
   ;
@@ -314,9 +318,22 @@ function sendMessage() {
 }
 
 function sendMessage2() {
-  console.log("Begin senMessage2");
-  // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
-  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
+  // console.log("Begin senMessage2");
+  // // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
+  // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
+  var divSwitcher = document.getElementById('videoswitcher');
+  divSwitcher.innerHTML ="";
+
+  var rickroll = document.createElement('iframe');
+  rickroll.setAttribute('width',"1280");
+  rickroll.setAttribute('height','720')
+  rickroll.setAttribute('frameborder','0');
+  rickroll.setAttribute('src','https://www.youtube.com/embed/dQw4w9WgXcQ&autoplay=1');
+  
+  //<iframe width="1280" height="720" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  main.appendChild(rickroll);
+
 }
 
 function yesilikeabeer(){
@@ -444,7 +461,4 @@ function nahbeerznasty(){
   var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
   linkTag.appendChild(linkText);
   main.appendChild(linkTag);
-
-  
-
 }
