@@ -24,7 +24,6 @@ function getApiState() {
           return response.json();
         })
         .then(function(data) {
-          console.log(data)
             for (var i=0; i<53; i++){
                 statesTotal += data[i].actuals.vaccinationsCompleted
                 }
@@ -84,7 +83,6 @@ function submitZIP(){
   var zipInput = document.getElementById('zipInput');
   zipGlobal = zipInput.value;
   var userZIP = zipInput.value;
-  console.log(userZIP);
   zipInput.value ="";
 
   var formAdd = document.getElementById('main');
@@ -99,10 +97,7 @@ function submitZIP(){
 }
 
 function yesResponse(){
-  console.log("Yes response recorded.")
-  
   var userZip = document.getElementById('zipInput');
-  console.log(userZip);
   var containerF = document.getElementById('main');
   containerF.innerHTML ="";
 
@@ -160,7 +155,7 @@ function noResponse(){
   var titleText = document.createTextNode('Seriously? Well, same to you!');
   titleTag.appendChild(titleText);
   titleTag.setAttribute('class', 'badHeader');
-  main.appendChild(titleTag);
+  header.appendChild(titleTag);
 
   var divSwitcher = document.createElement('div');
   divSwitcher.setAttribute('id','videoswitcher');
@@ -287,7 +282,6 @@ function setTime() {
   var secondsLeft = 5;
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    console.log(secondsLeft);
     
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -300,7 +294,6 @@ function setTime2() {
   var secondsLeft = 10;
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    console.log(secondsLeft);
     
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -310,7 +303,6 @@ function setTime2() {
 }
 
 function sendMessage() {
-  console.log("Begin Sendmessage");
   var main = document.getElementById("main");
   var divSwitcher = document.getElementById('divSwitcher');
   var eatItJerkTag = document.createElement("h3");
@@ -322,22 +314,110 @@ function sendMessage() {
 }
 
 function sendMessage2() {
-  // console.log("Begin senMessage2");
-  // // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
-  // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
   var divSwitcher = document.getElementById('videoswitcher');
   divSwitcher.innerHTML ="";
 
-  var rickroll = document.createElement('iframe');
-  rickroll.setAttribute('width',"1280");
-  rickroll.setAttribute('height','720')
-  rickroll.setAttribute('frameborder','0');
-  rickroll.setAttribute('src','https://www.youtube.com/embed/dQw4w9WgXcQ&autoplay=1');
   
-  //<iframe width="1280" height="720" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  var gifTag = document.createElement('a');
+    gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley&allow=autoplay');
+  
+  var randomBurnGif = [
+    {
+      textInd: 1,
+      gifVar: "./assets/images/01_oldNtired.gif"
+    },
+    {
+      textInd: 2,
+      gifVar: "./assets/images/02_idiotSammich.gif"
+    },
+    {
+      textInd: 3,
+      gifVar: "./assets/images/03_stupidFace.gif"
+    },
+    {
+      textInd: 4,
+      gifVar: "./assets/images/04_gameRecgame.gif"
+    },
+    {
+      textInd: 5,
+      gifVar: "./assets/images/05_gsgtHartman.gif"
+    },
+    {
+      textInd: 6,
+      gifVar: "./assets/images/06_frenchTaunting.gif"
+    },
+    {
+      textInd: 7,
+      gifVar: "./assets/images/07_josieP.gif"
+    },
+    {
+      textInd: 8,
+      gifVar: "./assets/images/08_theOffender.gif"
+    },
+    {
+      textInd: 9,
+      gifVar: "./assets/images/09_yaMama.gif"
+    },
+    {
+      textInd: 10,
+      gifVar: "./assets/images/10_hueySense.gif"
+    },
+    {
+      textInd: 11,
+      gifVar: "./assets/images/11_mamaSauce.gif"
+    },
+    {
+      textInd: 12,
+      gifVar: "./assets/images/12_wereHome.gif"
+    },
+    {
+      textInd: 13,
+      gifVar: "./assets/images/13_finnMom.gif"
+    },
+    {
+      textInd: 14,
+      gifVar: "./assets/images/14_peeBee.gif"
+    },
+    {
+      textInd: 15,
+      gifVar: "./assets/images/15_bmoStupid.gif"
+    },
+    {
+      textInd: 16,
+      gifVar: "./assets/images/16_garbageCan.gif"
+    },
+    {
+      textInd: 17,
+      gifVar: "./assets/images/17_uglyBandw.gif"
+    },
+    {
+      textInd: 18,
+      gifVar: "./assets/images/18_jennaDisgrace.gif"
+    },
+    {
+      textInd: 19,
+      gifVar: "./assets/images/19_housewivesTrashy.gif"
+    },
+    {
+      textInd: 20,
+      gifVar: "./assets/images/20_anchormanClassy.gif"
+    },
+  ]
 
-  main.appendChild(rickroll);
-
+    var gifPath = randomBurnGif[0].gifVar;
+    
+    for(var i=0; i<randomBurnGif.length-1; i++){
+      var index=Math.floor(Math.random() * randomBurnGif.length);
+    }
+    var insultGif = randomBurnGif[index].gifVar;
+  
+    var gifSelect = document.createElement('img');
+    gifSelect.setAttribute('src', insultGif);
+    gifSelect.setAttribute('alt','Eat it, rube!');
+    gifSelect.setAttribute('style','width:95%;height:95%;');
+  
+    gifTag.appendChild(gifSelect);
+    main.appendChild(gifTag);
 }
 
 function yesilikeabeer(){
@@ -368,25 +448,17 @@ function yesilikeabeer(){
     return response.json();
   })
   .then(function(data){
-    console.log(data);
     var beerList = data.results;
-    console.log(beerList);
-    console.log(data.results);
     
     for(var i=0; i<beerList.length; i++){
-      console.log(beerList[i].code);
       zipList = data.results[i].code;
-      console.log("zipList= "+zipList);
       
       let request6 = `https://api.openbrewerydb.org/breweries?by_postal=${zipList}`;
-      console.log(request6);
       fetch(request6)
       .then(function(response){
         return response.json();
       })
       .then(function(data){
-        console.log("Brewer card data:");
-        console.log(data);
         
         for(let i=0; i<data.length; i++){
           
@@ -428,6 +500,7 @@ function yesilikeabeer(){
             linkTag.setAttribute('href',`${data[i].website_url}`);
             linkTag.setAttribute('target', "_blank");
             console.log(linkTag.value);
+
             linkTag.appendChild(brewerUrlTag);
             brewerDivTag.appendChild(linkTag);
 
@@ -470,4 +543,101 @@ function nahbeerznasty(){
   var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
   linkTag.appendChild(linkText);
   main.appendChild(linkTag);
+
+  var attaboyTag = document.createElement('a');
+    attaboyTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley&allow=autoplay');
+  
+  var randomAttaboy = [
+    {
+      textInd: 1,
+      attaboy: "You really are a mensch; you shouold establish a newsletter. I'd subscribe to it."
+    },
+    {
+      textInd: 2,
+      attaboy: "Truly: well done. You are a monarch amongst humankind, and your medal is assuredly in the mail."
+    },
+    {
+      textInd: 3,
+      attaboy: "You've shown the kind of citizenship, good sense, and self-respect that's going to pull us all out of this godawful mess we're in."
+    },
+    {
+      textInd: 4,
+      attaboy: "Who needs beer anyway? What you really deserve is available only a few states away; you should take all that drive and care for self and country you've shown by vaccinating yourself, and take a crack at fixing Minnesota's public ballot initiative statutes. Till then, your princess is in another castle."
+    },
+    {
+      textInd: 5,
+      attaboy: "Your country needs more just like you; way to tune out the noise and the nonsense and the rampant hocus-pocus we see all around us. Go pat yourself on the back with some cat videos or somesuch other teetotal craziness."
+    },
+    {
+      textInd: 6,
+      attaboy: "May your days be long upon the earth, and your hardships few; fair winds, and following seas."
+    },
+    {
+      textInd: 7,
+      attaboy: "I'm sure the president is grateful as all get-out! If indeed he is cognizant of anything at all, god bless his million-year-old, red-white-and-blue heart!"
+    },
+    {
+      textInd: 8,
+      attaboy: "You deserve a laurel wreath, but I'm afraid you're just gonna have to settle for continued health. Your choice shows that you deserve better, but them's the breaks."
+    },
+    {
+      textInd: 9,
+      attaboy: "You deserve a summer filled with all the closeness, physical contact, and familial warmth you've been missing since this whole godawful mess started - go and have yourself one!"
+    },
+    {
+      textInd: 10,
+      attaboy: "Thanks a bajillion, bub, bubbette, or bubX. The citizenship, stewardship of others, and discrernment you've shown in choosing to vaccinate yourself has saved the whole rotten universe. The universe thanks you."
+    },
+    {
+      textInd: 11,
+      attaboy: "Great life choice, G. Maybe spread that give-a-darn attitude around some, bring some of the elastic-waistband crowd along or something. It's a thought."
+    },
+    {
+      textInd: 12,
+      attaboy: "May others always show you the same the same compassion you've shown them by your very humane choice to vaccinate yourself on your own and their behalf."
+    },
+    {
+      textInd: 13,
+      attaboy: "Hurray for you, Vaccine-Getter! OHIO STATE MUST BE DESTROYED."
+    },
+    {
+      textInd: 14,
+      attaboy: "Minnesota needs a LOT more responsible, reality-conscious citizens like yourself. Now get out into the city this 4th of July and cause some friggin' ruckus!"
+    },
+    {
+      textInd: 15,
+      attaboy: "Nice life choices there, app user! Tell some a' yer friends, whyncha'!"
+    },
+    {
+      textInd: 16,
+      attaboy: "Outstanding, this very responsible and praiseworthy decision you've made. Plainly you are among the elect; may your enemies tremble at your step, and the unrighteous flee in terror at your approach!"
+    },
+    {
+      textInd: 17,
+      attaboy: "Your country thanks you, sir, madam, or other; good as it been to you, you very responsibly stepped up and did your bit to help get us all out of this ridiculous car-crash of a situation. You are for sure one of the good guys."
+    },
+    {
+      textInd: 18,
+      attaboy: "This whole thing is up in smoke without decent folk like yourself doing what they can to stop it happening. What kinda' person won't bother with the lowest-hanging fruit anyway? Good on ya'."
+    },
+    {
+      textInd: 19,
+      attaboy: "Americans in all their vast dispersal throughout space and time agree on this one this among many others: it's exactly for folks just like you that Europeans stole the holy living Jesus out of this entire continent in the first place. Thanks for helping make their labour count, fellow squatter, and keep up the good work!"
+    },
+    {
+      textInd: 20,
+      attaboy: "Wow-EE, thanks a bazillion! Maybe we'll all get to go outside again soon, and breathe in good fresh air without worrying that we're all gonna' drop dead!"
+    },
+  ]
+    
+    for(i=0; i<randomAttaboy.length-1; i++){
+      var index=Math.floor(Math.random() * randomAttaboy.length);
+    }
+    attaboySelect = randomAttaboy[index].attaboy;
+    
+    var attaboySelectTag = document.createElement('h3');
+    var attaboySelectText = document.createTextNode(attaboySelect);
+    attaboySelectTag.appendChild(attaboySelectText);
+    attaboyTag.appendChild(attaboySelectTag);
+    main.appendChild(attaboyTag);
 }

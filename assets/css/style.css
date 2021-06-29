@@ -7,7 +7,13 @@ body {
   font-family: 'Barlow Condensed', sans-serif;
   border: dashed black 3px;
   padding-bottom: 1rem;
-  background-color: #f4efe5; /* dusty, cream color for more 'mer'ca -Neil */
+
+  /* having fun */
+  background-image:  linear-gradient(rgba(167, 167, 167, 0.7), rgba(192, 192, 192, 0.7)), url(img/project.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
 }
 
 #landscreenHeader {
@@ -28,11 +34,24 @@ body {
   align-items: center;
 }
 
+#zipInput{
+  text-align: center;
+}
+
 #code {
   background-color: navy;
   color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem; 
+  margin-left: 2px;
 }
+
+/* hover code hover  */
+/*#code:hover,
+#code:active{
+  background-color: royalblue;
+  transition: background-color 0.2s;
+
+} */
 
 #yesbutton {
   background-color: navy;
@@ -41,6 +60,12 @@ body {
   margin-right: 0.5rem;
   margin-left: 1rem;
 }
+/* hover yesbtn  */
+/* #yesbutton:hover,
+#yesbutton:active{
+  background-color: royalblue;
+  transition: background-color 0.2s;
+} */
 
 #nobutton {
   background-color: red;
@@ -48,6 +73,14 @@ body {
   border-radius: 0.5rem;
   margin-left: 0.5rem;
 }
+/* hover nobtn  */
+/* #nobutton:hover,
+#nobutton:active {
+  background-color: crimson;
+  transition: background-color 0.2s;
+} */
+
+
 
 .goodHeader {
   font-family: 'Courgette', serif;
@@ -73,6 +106,13 @@ body {
   margin-right: 0.5rem;
   margin-left: 1rem;
 }
+/* hover yesbeer  */
+/*#yesBeer:hover,
+#yesBeer:active{
+  background-color: royalblue;
+  transition: background-color 0.2s;
+}*/
+
 
 #noBeer {
   background-color: red;
@@ -80,6 +120,14 @@ body {
   border-radius: 0.5rem;
   margin-left: 0.5rem;
 }
+/* hover beer  */
+/*#noBeer:hover, 
+#nobeer:active{
+    background-color: royalblue;
+    transition: background-color 0.2s;
+  }*/
+
+
 
 #cardContainer {
   display: flex;
@@ -106,6 +154,14 @@ body {
   font-family: 'Nosifer', monospace;
   color: #8a0303;
 }
+
+/* hover card  */
+/*.brewerCard:hover,
+.brewerCard:active {
+  border-color:black;
+  transition: border-color 0.4s;
+}*/
+
 
 a {
   text-decoration: none;
