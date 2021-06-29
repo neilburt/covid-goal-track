@@ -318,21 +318,74 @@ function sendMessage() {
 }
 
 function sendMessage2() {
-  // console.log("Begin senMessage2");
-  // // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
-  // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
   var divSwitcher = document.getElementById('videoswitcher');
   divSwitcher.innerHTML ="";
 
-  var rickroll = document.createElement('iframe');
-  rickroll.setAttribute('width',"1280");
-  rickroll.setAttribute('height','720')
-  rickroll.setAttribute('frameborder','0');
-  rickroll.setAttribute('src','https://youtu.be/dQw4w9WgXcQ');
+  
+  var gifTag = document.createElement('a');
+    gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley&allow=autoplay');
+  
+  var randomBurnGif = [
+    {
+      textInd: 1,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 2,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 3,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 4,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 5,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 6,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 7,
+      gifVar: "./assets/images/oldNtired.gif"
+    },
+    {
+      textInd: 8,
+      gifVar: "./assets/images/oldNtired.gif"
+    }
+  ]
+    console.log(randomBurnGif);
+    console.log(randomBurnGif[0].gifVar);
+    var gifPath = "'"+randomBurnGif[0].gifVar+"'";
+    console.log(gifPath);
+    
+    
+    // for(var i=0; i<randomBurnGif.length-1; i++){
+    //   var index=Math.floor(Math.random() * randomBurnGif.length);
+    // }
+    // var insultGif = randomBurnGif[index].gifVar;
+    // console.log(insultGif);
+    
+  
+    var gifSelect = document.createElement('img');
+    gifSelect.setAttribute('src', gifPath);
+    gifSelect.setAttribute('alt','Eat it, rube!');
+    gifSelect.setAttribute('style','width:100%;height:100%;');
+  
+    gifTag.appendChild(gifSelect);
+    main.appendChild(gifTag);
+  
+    
+  
   
   //<iframe width="1280" height="720" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-  main.appendChild(rickroll);
+ 
 
 }
 
