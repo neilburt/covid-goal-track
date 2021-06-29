@@ -103,7 +103,7 @@ function yesResponse(){
 
   var yesLandingTag = document.createElement('h1')
   var yesLandingText = document.createTextNode("Word? Nice! Thanks for being part of the solution!");
-  console.log("Ohio State Delenda Est!");
+  console.log("OHIO STATE MUST BE DESTROYED.");
   yesLandingTag.appendChild(yesLandingText);
   yesLandingTag.setAttribute('class', 'goodHeader')
   containerF.appendChild(yesLandingTag);
@@ -270,7 +270,6 @@ function dunkOnyaJethro(){
     var index=Math.floor(Math.random() * randomString.length);
   }
   insultSelect = randomString[index].burn;
-  console.log(insultSelect);
   setTime();
 }
 
@@ -305,6 +304,7 @@ function sendMessage() {
   var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+insultSelect);
   ;
   eatItJerkTag.appendChild(eatItJerkText);
+  console.log(eatItJerkText);
   main.appendChild(eatItJerkTag);
   setTime2();
 }

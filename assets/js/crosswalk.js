@@ -2119,8 +2119,6 @@ function zipLookup(){
         }
 
         let countyData = stateData.filter( item => item.fips == apiNum )[0];
-        console.log(countyData);
-        console.log(countyData.county);
 
         var zipDisplay = document.getElementById('main');
         
@@ -2155,7 +2153,6 @@ function zipLookup(){
         var remainderPopPctLong = .7-countyData.metrics.vaccinationsInitiatedRatio
         var countyPop = countyData.population;
         remainderValue = remainderPopPctLong*countyPop;
-        console.log(remainderValue);
         vacsLeft = remainderValue.toFixed(0);
 
         var intTag = document.createElement('h3');
