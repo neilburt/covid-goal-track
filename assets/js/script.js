@@ -12,14 +12,12 @@ function landingScreen(){
     var landscreenHeadText = document.createTextNode('Minnesota COVID-19 Goal Tracker');
     landscreenHeadTag.appendChild(landscreenHeadText);
     container.appendChild(landscreenHeadTag);
-
     getApiState();
 }
 
 landingScreen();
 
 function getApiState() {
-    //   let searchEntry = $('#search-field').val();
       let requestUrl2 = `https://api.covidactnow.org/v2/states.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
       fetch(requestUrl2)
         .then(function(response) {
@@ -32,13 +30,8 @@ function getApiState() {
                 }
 
                 var pctCalc = (statesTotal/331000000)*100;
-                // console.log(pctCalc);
-
                 var totalUS = Math.round(pctCalc);
-                // console.log(totalUS);
-
                 var displayTest = document.getElementById('main');
-                
                 var blurbTag = document.createElement('p');
                 var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At our  current rate of vaccination, we will fall slightly short of this goal; those of us who want to make 2021 a summer of closeness even amid the rise of the Delta variant better campaign to get as many people vaccinated as quickly as possible.');
                 blurbTag.appendChild(blurbText);
@@ -51,19 +44,14 @@ function getApiState() {
                 var totalShareRoundCommas = Math.round(totalShareRound);
 
                 var p1Tag = document.createElement('p');
-                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall.toLocaleString('en-US')+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So "+totalShareRound.toLocaleString('en-US')+" Minnesotans need to show their dumb faces at a vaccination site TOUT SUITE or we'll have to eat a share of the blame for whatever disgrace befalls us as a result.");
+                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So, "+totalShareRound+" Minnesotans need to show their dumb faces at a vaccination site like RIGHT NOW or we'll have to eat a share of the blame for whatever resulting disgrace befalls us.");
                 p1Tag.appendChild(p1Text);
                 p1Tag.setAttribute('class', 'paragraph');
-
-                var delendaTag = document.createElement('p');
-                var delendaText = document.createTextNode("(Ohio must be destroyed, and Urban Meyer is a cunt. Flush twice: it is a LOOOONG way to Columbus.)");
-                delendaTag.appendChild(delendaText);
 
                 var mainScreen = document.getElementById('main');
 
                 mainScreen.appendChild(blurbTag);
                 mainScreen.appendChild(p1Tag);
-                mainScreen.appendChild(delendaTag);
                 loadForm();
         })
 }
@@ -186,105 +174,149 @@ function noResponse(){
   introTag2.setAttribute('class', 'badText');
   main.appendChild(introTag2);
 
-  var introTag3 = document.createElement('p');
-  var introText3 = document.createTextNode("Here are some links answering questions commonly posed by others who have chosen as you have:");
-  introTag3.appendChild(introText3);
-  main.appendChild(introTag3);
-
+  var linkAnchorTag = document.createElement('a');
+  linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
+  linkAnchorTag.setAttribute('class','infoLinx');
+  main.appendChild(linkAnchorTag);
   var link1Tag = document.createElement('h2');
   var link1Text = document.createTextNode("Are vaccines safe?");
   link1Tag.appendChild(link1Text);
-  main.appendChild(link1Tag);
-
-  var linkAnchorTag = document.createElement('a');
-  linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
-  var linkAnchorText = document.createTextNode('[External Link]');
-  linkAnchorTag.appendChild(linkAnchorText);
-  main.appendChild(linkAnchorTag);
-
-  var link2Tag = document.createElement('h2');
-  var link2Text = document.createTextNode("Is Alex Jones full of shit?");
-  link2Tag.appendChild(link2Text);
-  main.appendChild(link2Tag);
+  linkAnchorTag.appendChild(link1Tag);
 
   var linkAnchorTag2 = document.createElement('a');
   linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
-  var linkAnchorText2 = document.createTextNode('[External Link]');
-  linkAnchorTag2.appendChild(linkAnchorText2);
+  linkAnchorTag2.setAttribute('class','infoLinx');
   main.appendChild(linkAnchorTag2);
-
-  var link3Tag = document.createElement('h2');
-  var link3Text = document.createTextNode("How many people have actually died from this thing?");
-  link3Tag.appendChild(link3Text);
-  main.appendChild(link3Tag);
+  var link2Tag = document.createElement('h2');
+  var link2Text = document.createTextNode("Is Alex Jones full of shit?");
+  link2Tag.appendChild(link2Text);
+  linkAnchorTag2.appendChild(link2Tag);
 
   var linkAnchorTag3 = document.createElement('a');
   linkAnchorTag3.setAttribute('href','https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
-  var linkAnchorText3 = document.createTextNode('[External Link]');
-  linkAnchorTag3.appendChild(linkAnchorText3);
+  linkAnchorTag3.setAttribute('class','infoLinx');
   main.appendChild(linkAnchorTag3);
+  var link3Tag = document.createElement('h2');
+  var link3Text = document.createTextNode("How many people have actually died from this thing?");
+  link3Tag.appendChild(link3Text);
+  linkAnchorTag3.appendChild(link3Tag);
+
   dunkOnyaJethro()
 }
 
 function dunkOnyaJethro(){
-  //a period of five seconds should elapse; then, display 
   var randomString = [
     {
-      number: 1,
-      reply: "; your mother was a hamster, and your father smelt of elberberries."
+      textInd: 1,
+      burn: "; your mother was a hamster, and your father smelt of elberberries."
     },  
     {
-      number: 2,
-      reply: ", 'cause vaccinated people's dicks so hot they stolen - yo dick look just like Gary Coleman."
+      textInd: 2,
+      burn: ", 'cause vaccinated people's dicks so hot they stolen - yo dick look just like Gary Coleman."
     },
     {
-      number: 3,
-      reply: ". I also heard that Yo mama's so poor, the ducks throw bread at her."
+      textInd: 3,
+      burn: ". I also heard that Yo mama's so poor, the ducks throw bread at her."
     },
     {
-      number: 4,
-      reply: ", unless you're fine with going through the whole rotten thing dragging your knuckles around everywhere with you."
+      textInd: 4,
+      burn: ", unless you're fine with going through the whole rotten thing dragging your knuckles around everywhere with you."
     },
     {
-      number: 5,
-      reply: ", and it's real messed up that yo mama so fat, when she cosplayed as Maleficent dudes thought she was tryna' be Ursula."
+      textInd: 5,
+      burn: ", and it's real messed up that yo mama so fat, when she cosplayed as Maleficent dudes thought she was tryna' be Ursula."
     },
     {
-      number: 6,
-      reply: " - hard to expect better from someone whose mama so fat, it take her two hours to watch 60 Minutes."
+      textInd: 6,
+      burn: " - hard to expect any better from someone whose mama so dumb it take her two hours to watch 60 Minutes."
     },
     {
-      number: 7,
-      reply: ". Know what else, Jethro? Yo mama so broke, Nigerian princes be sending HER money."
+      textInd: 7,
+      burn: ". Know what else, Jethro? Yo mama so broke, Nigerian princes be sending HER money."
     },
     {
-      number: 8,
-      reply: ", and if you can't behave yourself any better than that you'd be well-advised to start wearing a bicycle helmet anytime you're out in public."
+      textInd: 8,
+      burn: ", and if you can't behave yourself any better than that you'd be well-advised to start wearing a bicycle helmet anytime you're out in public."
     },
     {
-      number: 9,
-      reply: ", and I envy people who never have to meet you."
+      textInd: 9,
+      burn: ", and I envy people who never have to meet you."
     },
     {
-      number: 10,
-      reply: "; you are just impossible to underestimate, it seems - even if you were a potato, mahfs'd still be like, 'there go one dumb-ass potato'."
+      textInd: 10,
+      burn: "; you are just impossible to underestimate, it seems - even if you were a potato, mahfs'd still be like, 'there go one dumb-ass potato'."
     },
     {
-      number: 11,
-      reply: ". You resemble Rapunzel a bit, in that where she lets down her hair, you let down everyone you ever meet EVER."
+      textInd: 11,
+      burn: ". You resemble Rapunzel a bit: she lets down her hair, and you let down everyone you ever meet."
+    },
+    {
+      textInd: 12,
+      burn: "if you honestly think this kind of thing is going to fly; you're a realjerk, and you smell like farts."
+    },
+    {
+      textInd: 11,
+      burn: " and stop being a butthole about this kind of easy crap. GET VACCINATED, JETHRO!"
+    },
+    {
+      textInd: 12,
+      burn: ". You look like six pounds of dog crap in an eight-ounce sack - so ugly that on the day you were born the doctor slapped ya MAMA. And SHE's so damned ugly, her therapist makes her lie face down."
+    },
+    {
+      textInd: 13,
+      burn: "; lord, what a jerk you are. What did your country ever do to you? If we promise to throw you a stick, will you leave?"
     }
   ]
 
-  for(i=0; i<dunkOnyaJethro.length-1; i++){
-    var index=Math.floor(Math.random() * dunkOnyaJethro.length);
+  for(i=0; i<randomString.length-1; i++){
+    var index=Math.floor(Math.random() * randomString.length);
+  }
+  insultSelect = randomString[index].burn;
+  console.log(insultSelect);
+  setTime();
 }
 
+function setTime() {
+  var secondsLeft = 5;
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    console.log(secondsLeft);
+    
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+  }, 1000);
+}
 
-  var dunkTag = document.createElement('h2');
-  var dunkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+randomString);
-  link3Tag.appendChild(link3Text);
-  main.appendChild(link3Tag);
+function setTime2() {
+  var secondsLeft = 10;
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    console.log(secondsLeft);
+    
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage2();
+    }
+  }, 1000);
+}
 
+function sendMessage() {
+  console.log("Begin Sendmessage");
+  var main = document.getElementById("main");
+  var eatItJerkTag = document.createElement("h3");
+  var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+insultSelect);
+  ;
+  eatItJerkTag.appendChild(eatItJerkText);
+  main.appendChild(eatItJerkTag);
+  setTime2();
+}
+
+function sendMessage2() {
+  console.log("Begin senMessage2");
+  // window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_blank');
+  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
 }
 
 function yesilikeabeer(){
@@ -407,9 +439,6 @@ function nahbeerznasty(){
   
   linkTag.setAttribute('href','');
   main.appendChild(linkTag);
-
-  // linkTag.setAttribute('value', `"${data[i].website_url}"`);
-  // linkTag.setAttribute('href',`"${data[i].website_url}"`)
   
   linkTag.setAttribute('href','https://www.atlasobscura.com/things-to-do/minnesota');
   var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
