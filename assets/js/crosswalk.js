@@ -2133,25 +2133,25 @@ function zipLookup(){
         zipDisplay.appendChild(countyDisplayTag);
 
         var deathsTag = document.createElement('p');
-        var deathsText = document.createTextNode("Deaths: "+countyData.actuals.deaths)
+        var deathsText = document.createTextNode("Deaths: "+countyData.actuals.deaths.toLocaleString());
         deathsTag.appendChild(deathsText);
         zipDisplay.appendChild(deathsTag);
 
         var casesTag = document.createElement('p');
-        var casesText = document.createTextNode("Cases: "+countyData.actuals.cases);
+        var casesText = document.createTextNode("Cases: "+countyData.actuals.cases.toLocaleString());
         casesTag.appendChild(casesText);
         zipDisplay.appendChild(casesTag);
 
         var percentage = countyData.metrics.vaccinationsInitiatedRatio*100+"%"
         var pctInitTag = document.createElement('p');
-        var pctInitText = document.createTextNode("Percent initiated: "+percentage);
+        var pctInitText = document.createTextNode("Initiated vaccination: "+percentage);
         pctInitTag.appendChild(pctInitText);
         zipDisplay.appendChild(pctInitTag);
 
         var percent2 = (countyData.metrics.vaccinationsCompletedRatio*100).toFixed(1);
         // percentPass = percent2*100+"%";
         var pctCompTag = document.createElement('p');
-        var pctCompText = document.createTextNode("Percent completed: "+percent2+"%");
+        var pctCompText = document.createTextNode("Completed vaccination: "+percent2+"%");
         pctCompTag.appendChild(pctCompText);
         zipDisplay.appendChild(pctCompTag);
 
@@ -2162,7 +2162,7 @@ function zipLookup(){
         vacsLeft = remainderValue.toFixed(0);
 
         var intTag = document.createElement('h3');
-        var intText = document.createTextNode(vacsLeft+" people in "+countyData.county+" remain to be vaccinated by the 4th to meet the presidential goal.");
+        var intText = document.createTextNode(parseFloat(vacsLeft).toLocaleString()+" people in "+countyData.county+" remain to be vaccinated by the 4th to meet the Presidential goal.");
         intTag.appendChild(intText);
         zipDisplay.appendChild(intTag);
 
@@ -2170,7 +2170,7 @@ function zipLookup(){
         zipDisplay.appendChild(formDiv);
         
         var promptTag = document.createElement('h3');
-        var promptText = document.createTextNode('Have you already completed your COVID-19 vaccination?')
+        var promptText = document.createTextNode('Have you already completed your first COVID-19 vaccination?');
         promptTag.appendChild(promptText);
         formDiv.appendChild(promptTag);
         

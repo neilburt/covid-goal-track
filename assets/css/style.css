@@ -1,15 +1,132 @@
-.brewerCard {
-    display: grid;
-    grid-column-gap: 50px;
-    width: 23rem;
-    background-image: linear-gradient(to right, yellow, red);
-    border-style: solid;
-    border-color: salmon;
-    font-weight: bold;
-    padding-left: 1rem;
+* {
+  box-sizing: border-box;
+  font-size: 1.25rem;
 }
-@media (max-width: 600px) {
-    .brewerCard {
-        display: block;
-    }
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  border: dashed black 3px;
+  padding-bottom: 1rem;
+}
+
+#landscreenHeader {
+  font-size: 1.75rem;
+  font-family: 'Black Ops One', sans-serif;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, navy, white, red);
+  margin: 0;
+  padding: 1rem;
+}
+
+.paragraph {
+  text-indent: 1rem;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}
+
+/* form {
+  margin: 1rem;
+} */
+
+#code {
+  background-color: navy;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+#yesbutton {
+  background-color: navy;
+  color: white;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+
+#nobutton {
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.goodHeader {
+  font-family: 'Courgette', serif;
+}
+
+.goodText {
+  font-family: 'Courgette', serif;
+}
+
+.badHeader {
+  font-family: 'Bahiana', sans-serif;
+  font-size: 2rem;
+}
+
+.badText {
+  font-family: 'Lacquer', sans-serif;
+}
+
+#yesBeer {
+  background-color: navy;
+  color: white;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+
+#noBeer {
+  background-color: red;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.brewerCard {
+  flex: 1;
+  width: 32%;
+  margin: 1rem;
+  padding: 1rem;
+  /* display: grid; */
+  /* grid-column-gap: 50px; */
+  /* width: 23rem; */
+  background-image: linear-gradient(to right, yellow, red);
+  border-style: solid;
+  border-color: salmon;
+  font-weight: bold;
+  /* padding-left: 1rem; */
+}
+/* @media (max-width: 600px) {
+  .brewerCard {
+      display: block;
+  }
+} */
+
+a {
+  text-decoration: none;
+  padding: 0 1rem 0 1rem;
+}
+
+p, h1, h2, h3, h4 {
+  padding: 0 1rem 0 1rem;
+}
+
+@media screen and (max-width: 460px) {
+  *, body, .badHeader, #landscreenHeader {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  *, body, .badHeader, #landscreenHeader {
+    font-size: 1rem;
+  }
 }
