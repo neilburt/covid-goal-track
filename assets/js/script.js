@@ -43,8 +43,8 @@ function getApiState() {
                 var totalShareRound = Math.round(totalShare);
                 var totalShareRoundCommas = Math.round(totalShareRound);
 
-                var p1Tag = document.createElement('p');
-                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So, "+totalShareRound+" Minnesotans need to show their dumb faces at a vaccination site like RIGHT NOW or we'll have to eat a share of the blame for whatever resulting disgrace befalls us.");
+                var p1Tag = document.createElement('p'); // added ".toLocaleString()" methods to large numbers needing comma-notation below -Neil
+                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall.toLocaleString()+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So "+totalShareRound.toLocaleString()+" Minnesotans need to show their dumb faces at a vaccination site like RIGHT NOW or we'll have to eat a share of the blame for whatever resulting disgrace befalls us.");
                 p1Tag.appendChild(p1Text);
                 p1Tag.setAttribute('class', 'paragraph');
 
@@ -121,6 +121,7 @@ function yesResponse(){
 
   var linkTag = document.createElement('a');
   linkTag.setAttribute('href','https://mn.gov/covid19/vaccine-rewards/index.jsp');
+  linkTag.setAttribute('target', "_blank");
   var linkText = document.createTextNode('https://mn.gov/covid19/vaccine-rewards/index.jsp');
   linkTag.appendChild(linkText);
   containerF.appendChild(linkTag);
@@ -172,13 +173,14 @@ function noResponse(){
   divSwitcher.appendChild(introTag);
 
   var introTag2 = document.createElement('p');
-  var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd need to have made this choice differntly.");
+  var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd need to have made this choice differently.");
   introTag2.appendChild(introText2);
   introTag2.setAttribute('class', 'badText');
   divSwitcher.appendChild(introTag2);
 
   var linkAnchorTag = document.createElement('a');
   linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
+  linkAnchorTag.setAttribute('target', "_blank");
   linkAnchorTag.setAttribute('class','infoLinx');
   divSwitcher.appendChild(linkAnchorTag);
   var link1Tag = document.createElement('h2');
@@ -188,6 +190,7 @@ function noResponse(){
 
   var linkAnchorTag2 = document.createElement('a');
   linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
+  linkAnchorTag2.setAttribute('target', "_blank");
   linkAnchorTag2.setAttribute('class','infoLinx');
   divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
@@ -197,6 +200,7 @@ function noResponse(){
 
   var linkAnchorTag3 = document.createElement('a');
   linkAnchorTag3.setAttribute('href','https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
+  linkAnchorTag3.setAttribute('target', "_blank");
   linkAnchorTag3.setAttribute('class','infoLinx');
   divSwitcher.appendChild(linkAnchorTag3);
   var link3Tag = document.createElement('h2');
@@ -311,8 +315,8 @@ function sendMessage() {
   var divSwitcher = document.getElementById('divSwitcher');
   var eatItJerkTag = document.createElement("h3");
   var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+insultSelect);
-  ;
   eatItJerkTag.appendChild(eatItJerkText);
+  eatItJerkTag.setAttribute('class', "jerkText");
   main.appendChild(eatItJerkTag);
   setTime2();
 }
@@ -381,11 +385,11 @@ function yesilikeabeer(){
         return response.json();
       })
       .then(function(data){
-        console.log("Here is the data:");
+        console.log("Brewer card data:");
         console.log(data);
         
         for(let i=0; i<data.length; i++){
-
+          
           if (data[i] == null){
             break;
           }else{
@@ -394,36 +398,40 @@ function yesilikeabeer(){
             cardDisplay.appendChild(brewerDivTag);
             
             var brewerHeadTag = document.createElement('h3');
-            var brewerHeadText = document.createTextNode(data[i].name);
+            var brewerHeadText = document.createTextNode(data[i].name || "");
             brewerHeadTag.appendChild(brewerHeadText);
             brewerDivTag.appendChild(brewerHeadTag);
             brewerHeadTag.setAttribute('class', 'goodHeader');
-
+            
             var brewerStreetTag = document.createElement('p');
-            var brewerStreetText = document.createTextNode(data[i].street);
+            var brewerStreetText = document.createTextNode(data[i].street || "");
             brewerStreetTag.appendChild(brewerStreetText);
             brewerDivTag.appendChild(brewerStreetTag);
-
+          
             var brewerCityTag = document.createElement('p');
-            var brewerCityText = document.createTextNode(data[i].city);
+            var brewerCityText = document.createTextNode(data[i].city || "");
             brewerCityTag.appendChild(brewerCityText);
             brewerDivTag.appendChild(brewerCityTag);
 
             var brewerPhoneTag = document.createElement('p');
-            var brewerPhoneText = document.createTextNode(data[i].phone);
+            var brewerPhoneText = document.createTextNode(data[i].phone || "");
             brewerPhoneTag.appendChild(brewerPhoneText);
             brewerDivTag.appendChild(brewerPhoneTag);
 
+
             var linkTag = document.createElement('a');
             var brewerUrlTag = document.createElement('p');
-            var brewerUrlText = document.createTextNode(data[i].website_url);
+            var brewerUrlText = document.createTextNode(data[i].website_url || "");
             brewerUrlTag.appendChild(brewerUrlText);
-            linkTag.setAttribute('value', `"${data[i].website_url}"`);
-            linkTag.setAttribute('href',`"${data[i].website_url}"`)
+            brewerUrlTag.setAttribute('class', "brewLinkText");
+            linkTag.setAttribute('value', `${data[i].website_url}`);
+            linkTag.setAttribute('href',`${data[i].website_url}`);
+            linkTag.setAttribute('target', "_blank");
             console.log(linkTag.value);
             linkTag.appendChild(brewerUrlTag);
             brewerDivTag.appendChild(linkTag);
-          }
+
+        }
           
         }
       })
@@ -458,6 +466,7 @@ function nahbeerznasty(){
   main.appendChild(linkTag);
   
   linkTag.setAttribute('href','https://www.atlasobscura.com/things-to-do/minnesota');
+  linkTag.setAttribute('target', "_blank");
   var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
   linkTag.appendChild(linkText);
   main.appendChild(linkTag);

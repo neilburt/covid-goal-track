@@ -7,6 +7,7 @@ body {
   font-family: 'Barlow Condensed', sans-serif;
   border: dashed black 3px;
   padding-bottom: 1rem;
+  background-color: #f4efe5; /* dusty, cream color for more 'mer'ca -Neil */
 }
 
 #landscreenHeader {
@@ -26,10 +27,6 @@ body {
   text-align: center;
   align-items: center;
 }
-
-/* form {
-  margin: 1rem;
-} */
 
 #code {
   background-color: navy;
@@ -95,20 +92,20 @@ body {
   width: 32%;
   margin: 1rem;
   padding: 1rem;
-  /* display: grid; */
-  /* grid-column-gap: 50px; */
-  /* width: 23rem; */
   background-image: linear-gradient(to right, yellow, red);
   border-style: solid;
   border-color: salmon;
   font-weight: bold;
-  /* padding-left: 1rem; */
 }
-/* @media (max-width: 600px) {
-  .brewerCard {
-      display: block;
-  }
-} */
+
+.brewLinkText {
+  font-size: 1.5vw;
+}
+
+.jerkText {
+  font-family: 'Nosifer', monospace;
+  color: #8a0303;
+}
 
 a {
   text-decoration: none;
@@ -117,6 +114,19 @@ a {
 
 p, h1, h2, h3, h4 {
   padding: 0 1rem 0 1rem;
+}
+
+@media screen and (max-width: 710px) {
+  #cardContainer {
+    flex-direction: column;
+  }
+  .brewerCard {
+    width: 90%;
+    text-align: center;
+  }
+  .brewLinkText {
+    font-size: 3.5vw;
+  }
 }
 
 @media screen and (max-width: 460px) {
