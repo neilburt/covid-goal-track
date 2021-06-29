@@ -25,9 +25,9 @@ body {
   padding: 1rem;
 }
 
-.paragraph {
+/* .paragraph {
   text-indent: 1rem;
-}
+} */
 
 .center {
   text-align: center;
@@ -195,4 +195,9 @@ p, h1, h2, h3, h4 {
   *, body, .badHeader, #landscreenHeader {
     font-size: 1rem;
   }
+}
+
+#videoswitcher{
+    margin-left: auto;
+    margin-right: auto;
 }

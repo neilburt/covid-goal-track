@@ -2164,7 +2164,7 @@ function zipLookup(){
         zipDisplay.appendChild(formDiv);
         
         var promptTag = document.createElement('h3');
-        var promptText = document.createTextNode('Have you already completed your first COVID-19 vaccination?');
+        var promptText = document.createTextNode('Have you already completed your COVID-19 vaccination?');
         promptTag.appendChild(promptText);
         formDiv.appendChild(promptTag);
         

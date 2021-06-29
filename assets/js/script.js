@@ -414,7 +414,7 @@ function sendMessage2() {
     var gifSelect = document.createElement('img');
     gifSelect.setAttribute('src', insultGif);
     gifSelect.setAttribute('alt','Eat it, rube!');
-    gifSelect.setAttribute('style','width:95%;height:95%;');
+    gifSelect.setAttribute('style','width:80%;height:80%;');
   
     gifTag.appendChild(gifSelect);
     main.appendChild(gifTag);
