@@ -328,40 +328,88 @@ function sendMessage2() {
   var randomBurnGif = [
     {
       textInd: 1,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/01_oldNtired.gif"
     },
     {
       textInd: 2,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/02_idiotSammich.gif"
     },
     {
       textInd: 3,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/03_stupidFace.gif"
     },
     {
       textInd: 4,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/04_gameRecgame.gif"
     },
     {
       textInd: 5,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/05_gsgtHartman.gif"
     },
     {
       textInd: 6,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/06_frenchTaunting.gif"
     },
     {
       textInd: 7,
-      gifVar: "./assets/images/oldNtired.gif"
+      gifVar: "./assets/images/07_josieP.gif"
     },
     {
       textInd: 8,
-      gifVar: "./assets/images/oldNtired.gif"
-    }
+      gifVar: "./assets/images/08_theOffender.gif"
+    },
+    {
+      textInd: 9,
+      gifVar: "./assets/images/09_yaMama.gif"
+    },
+    {
+      textInd: 10,
+      gifVar: "./assets/images/10_hueySense.gif"
+    },
+    {
+      textInd: 11,
+      gifVar: "./assets/images/11_mamaSauce.gif"
+    },
+    {
+      textInd: 12,
+      gifVar: "./assets/images/12_wereHome.gif"
+    },
+    {
+      textInd: 13,
+      gifVar: "./assets/images/13_finnMom.gif"
+    },
+    {
+      textInd: 14,
+      gifVar: "./assets/images/14_peeBee.gif"
+    },
+    {
+      textInd: 15,
+      gifVar: "./assets/images/15_bmoStupid.gif"
+    },
+    {
+      textInd: 16,
+      gifVar: "./assets/images/16_garbageCan.gif"
+    },
+    {
+      textInd: 17,
+      gifVar: "./assets/images/17_uglyBandw.gif"
+    },
+    {
+      textInd: 18,
+      gifVar: "./assets/images/18_jennaDisgrace.gif"
+    },
+    {
+      textInd: 19,
+      gifVar: "./assets/images/19_housewivesTrashy.gif"
+    },
+    {
+      textInd: 20,
+      gifVar: "./assets/images/20_anchormanClassy.gif"
+    },
   ]
     console.log(randomBurnGif);
     console.log(randomBurnGif[0].gifVar);
-    var gifPath = "'"+randomBurnGif[0].gifVar+"'";
+    var gifPath = randomBurnGif[0].gifVar;
     console.log(gifPath);
     
     
@@ -375,18 +423,10 @@ function sendMessage2() {
     var gifSelect = document.createElement('img');
     gifSelect.setAttribute('src', gifPath);
     gifSelect.setAttribute('alt','Eat it, rube!');
-    gifSelect.setAttribute('style','width:100%;height:100%;');
+    gifSelect.setAttribute('style','width:95%;height:95%;');
   
     gifTag.appendChild(gifSelect);
     main.appendChild(gifTag);
-  
-    
-  
-  
-  //<iframe width="1280" height="720" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
- 
-
 }
 
 function yesilikeabeer(){
