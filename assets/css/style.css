@@ -2,7 +2,6 @@
   box-sizing: border-box;
   font-size: 1.25rem;
 }
-
 body {
   font-family: 'Barlow Condensed', sans-serif;
   border: dashed black 3px;
@@ -13,7 +12,6 @@ body {
   height: 100vh;
   background-attachment: fixed;
 }
-
 #landscreenHeader {
   font-size: 1.75rem;
   font-family: 'Black Ops One', sans-serif;
@@ -22,30 +20,24 @@ body {
   margin: 0;
   padding: 1rem;
 }
-
 .center {
   text-align: center;
   align-items: center;
 }
-
 #zipInput{
   text-align: center;
 }
-
 #code {
   background-color: navy;
   color: white;
   border-radius: 0.5rem; 
   margin-left: 2px;
 }
-
 #code:hover,
 #code:active{
   background-color: royalblue;
   transition: background-color 0.2s;
-
 }
-
 #yesbutton {
   background-color: navy;
   color: white;
@@ -53,43 +45,35 @@ body {
   margin-right: 0.5rem;
   margin-left: 1rem;
 }
-
 #yesbutton:hover,
 #yesbutton:active{
   background-color: royalblue;
   transition: background-color 0.2s;
-} */
-
+}
 #nobutton {
   background-color: red;
   color: white;
   border-radius: 0.5rem;
   margin-left: 0.5rem;
 }
-
 #nobutton:hover,
 #nobutton:active {
   background-color: crimson;
   transition: background-color 0.2s;
 }
-
 .goodHeader {
   font-family: 'Courgette', serif;
 }
-
 .goodText {
   font-family: 'Courgette', serif;
 }
-
 .badHeader {
   font-family: 'Bahiana', sans-serif;
   font-size: 2rem;
 }
-
 .badText {
   font-family: 'Lacquer', sans-serif;
 }
-
 #yesBeer {
   background-color: navy;
   color: white;
@@ -97,32 +81,27 @@ body {
   margin-right: 0.5rem;
   margin-left: 1rem;
 }
-
 #yesBeer:hover,
 #yesBeer:active{
   background-color: royalblue;
   transition: background-color 0.2s;
 }
-
 #noBeer {
   background-color: red;
   color: white;
   border-radius: 0.5rem;
   margin-left: 0.5rem;
 }
-
 #noBeer:hover, 
 #nobeer:active{
     background-color: royalblue;
     transition: background-color 0.2s;
 }
-
 #cardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
 .brewerCard {
   flex: 1;
   width: 32%;
@@ -133,31 +112,25 @@ body {
   border-color: salmon;
   font-weight: bold;
 }
-
 .brewLinkText {
   font-size: 1.5vw;
 }
-
 .jerkText {
   font-family: 'Nosifer', monospace;
   color: #8a0303;
 }
-
 .brewerCard:hover,
 .brewerCard:active {
   border-color:black;
   transition: border-color 0.4s;
 }
-
 a {
   text-decoration: none;
   padding: 0 1rem 0 1rem;
 }
-
 p, h1, h2, h3, h4 {
   padding: 0 1rem 0 1rem;
 }
-
 @media screen and (max-width: 710px) {
   #cardContainer {
     flex-direction: column;
@@ -170,13 +143,11 @@ p, h1, h2, h3, h4 {
     font-size: 3.5vw;
   }
 }
-
 @media screen and (max-width: 460px) {
   *, body, .badHeader, #landscreenHeader {
     font-size: 1.1rem;
   }
 }
-
 @media screen and (max-width: 320px) {
   *, body, .badHeader, #landscreenHeader {
     font-size: 1rem;

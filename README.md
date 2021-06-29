@@ -6,10 +6,12 @@ This is a web application that attempts to positively affect the American public
 ## Screenshots
 ![Screenshot of Goal Track web page.](./assets/images/screenshot.jpg)
 ---
-![Screenshot2 of Goal Track web page.](.assets/images/screenshot2.jpg)
+![Screenshot2 of Goal Track web page.](./assets/images/screenshot2.jpg)
 ---
-![Screenshot3 of Goal Track web page.](.assets/images/screenshot3.jpg)
+![Screenshot3 of Goal Track web page.](./assets/images/screenshot3.jpg)
 ---
-![Screenshot4 of Goal Track web page.](.assets/images/screenshot4.jpg)
+![Screenshot4 of Goal Track web page.](./assets/images/screenshot4.jpg)
+---
+![Screenshot5 of Goal Track web page.](./assets/images/screenshot5.jpg)
 
 Check out the [deployed web page](https://JChosay.github.io/group-pj1-covid-goal-track/)
