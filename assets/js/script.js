@@ -8,6 +8,7 @@ var zipList;
 function landingScreen(){
     var container = document.getElementById('main');
     var landscreenHeadTag = document.createElement('h2');
+    landscreenHeadTag.setAttribute('id', 'landscreenHeader');
     var landscreenHeadText = document.createTextNode('Minnesota COVID-19 Goal Tracker');
     landscreenHeadTag.appendChild(landscreenHeadText);
     container.appendChild(landscreenHeadTag);
@@ -41,6 +42,7 @@ function getApiState() {
                 var blurbTag = document.createElement('p');
                 var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At our  current rate of vaccination, we will fall slightly short of this goal; those of us who want to make 2021 a summer of closeness even amid the rise of the Delta variant better campaign to get as many people vaccinated as quickly as possible.');
                 blurbTag.appendChild(blurbText);
+                blurbTag.setAttribute('class', 'paragraph');
                 
                 var shortfall = 160000000-statesTotal
                 var totalShare = shortfall*0.017047322;
@@ -49,8 +51,9 @@ function getApiState() {
                 var totalShareRoundCommas = Math.round(totalShareRound);
 
                 var p1Tag = document.createElement('p');
-                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So, "+totalShareRound+" Minnesotans need to show their dumb faces at a vaccination site TUT SUITE or we'll have to eat a share of the blame for whatever discrace befalls us as a result.");
+                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall.toLocaleString('en-US')+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So "+totalShareRound.toLocaleString('en-US')+" Minnesotans need to show their dumb faces at a vaccination site TOUT SUITE or we'll have to eat a share of the blame for whatever disgrace befalls us as a result.");
                 p1Tag.appendChild(p1Text);
+                p1Tag.setAttribute('class', 'paragraph');
 
                 var delendaTag = document.createElement('p');
                 var delendaText = document.createTextNode("(Ohio must be destroyed, and Urban Meyer is a cunt. Flush twice: it is a LOOOONG way to Columbus.)");
@@ -71,6 +74,7 @@ function loadForm(){
     var formtextTag = document.createElement('h2');
     var formtextText = document.createTextNode('Please enter your ZIP code:')
     formtextTag.appendChild(formtextText);
+    formDeclare.setAttribute('class', 'center');
     var zipEntry = document.createElement('input');
     zipEntry.setAttribute('type','text');
     zipEntry.setAttribute('maxLength',5);
@@ -118,11 +122,13 @@ function yesResponse(){
   var yesLandingText = document.createTextNode("Word? Nice! Thanks for being part of the solution!");
   console.log("Ohio State Delenda Est!");
   yesLandingTag.appendChild(yesLandingText);
+  yesLandingTag.setAttribute('class', 'goodHeader')
   containerF.appendChild(yesLandingTag);
 
   var linkIntroTag = document.createElement('p');
   var linkIntroText = document.createTextNode('Minnesota offers a variety of incentives for resident vaccinations. Claim yours today at:')
   linkIntroTag.appendChild(linkIntroText);
+  linkIntroTag.setAttribute('class', 'goodText');
   containerF.appendChild(linkIntroTag);
 
   var linkTag = document.createElement('a');
@@ -141,11 +147,13 @@ function yesResponse(){
   var yesButton = document.createElement('input');
   yesButton.setAttribute('type','button');
   yesButton.setAttribute('value','Sure I do.');
+  yesButton.setAttribute('id', 'yesBeer');
   yesButton.addEventListener("click", yesilikeabeer);
 
   var noButton = document.createElement('input');
   noButton.setAttribute('type','button');
   noButton.setAttribute('value','Not Particularly...');
+  noButton.setAttribute('id', 'noBeer');
   noButton.addEventListener("click", nahbeerznasty);
 
   buttonContainer.appendChild(yesButton);
@@ -162,18 +170,20 @@ function noResponse(){
 
   var titleTag = document.createElement('h1');
   var titleText = document.createTextNode('Seriously? Well, same to you!');
-
   titleTag.appendChild(titleText);
+  titleTag.setAttribute('class', 'badHeader');
   main.appendChild(titleTag);
 
   var introTag = document.createElement('h4');
   var introText = document.createTextNode("That's not too cool, brutha'. In the name of citizenship, good taste, and the memory of the late great Herman Cain, you really ought to reconsider this particular life choice you've made. ");
   introTag.appendChild(introText);
+  introTag.setAttribute('class', 'badText');
   main.appendChild(introTag);
 
   var introTag2 = document.createElement('p');
   var introText2 = document.createTextNode("Surely you'll concede, as a decent, God-fearing American citizen, that it's at least a possibility that you don't have all the information a body'd needed to have made this choice differntly.");
   introTag2.appendChild(introText2);
+  introTag2.setAttribute('class', 'badText');
   main.appendChild(introTag2);
 
   var introTag3 = document.createElement('p');
@@ -292,6 +302,7 @@ function yesilikeabeer(){
   var introTag = document.createElement('h4');
   var introText = document.createTextNode('Cheers to you! Congratulate yourself on your citizenship at one of these fine Minnesota breweries - all within 5 miles of your ZIP!');
   introTag.appendChild(introText);
+  introTag.setAttribute('class', 'goodHeader');
   main.appendChild(introTag);
 
   var cardDisplay = document.createElement('div');
@@ -337,6 +348,7 @@ function yesilikeabeer(){
             var brewerHeadText = document.createTextNode(data[i].name);
             brewerHeadTag.appendChild(brewerHeadText);
             brewerDivTag.appendChild(brewerHeadTag);
+            brewerHeadTag.setAttribute('class', 'goodHeader');
 
             var brewerStreetTag = document.createElement('p');
             var brewerStreetText = document.createTextNode(data[i].street);
@@ -386,6 +398,7 @@ function nahbeerznasty(){
   var introTag = document.createElement('h4');
   var introText = document.createTextNode("It's cool; there's all kinds of stuff to do this summer in Minnesota; this is a cool place. Here's some examples: ");
   introTag.appendChild(introText);
+  introTag.setAttribute('class', 'goodText');
   main.appendChild(introTag);
 
   var linkTag = document.createElement('a');
