@@ -4,17 +4,14 @@ var apiNum
 function zipLookup(){
     let requestUrl3 = `https://api.covidactnow.org/v2/counties.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;    
       var userZip = document.getElementById('zipLoad').innerHTML;
-      console.log(userZip);
       
       fetch(requestUrl3)
       .then(function(response) {
         return response.json();
       })
       .then(function(data) {
-        console.log(data)
 
         let stateData = data.filter( elem => elem.state === "MN" );
-        console.log(stateData);
 
         if(userZip==56510){
             apiNum =27107;
