@@ -484,37 +484,34 @@ function yesilikeabeer(){
       fetch(request6)
       .then(function(response){
         return response.json();
+        console.log(response);
       })
       .then(function(data){
         
         for(let i=0; i<data.length; i++){
           
-          if (data[i] == null){
-            break;
-          }else{
-            var brewerDivTag = document.createElement('div');
-            brewerDivTag.setAttribute('class',"brewerCard");
-            cardDisplay.appendChild(brewerDivTag);
-            
-            var brewerHeadTag = document.createElement('h3');
-            var brewerHeadText = document.createTextNode(data[i].name || "");
-            brewerHeadTag.appendChild(brewerHeadText);
-            brewerDivTag.appendChild(brewerHeadTag);
-            brewerHeadTag.setAttribute('class', 'goodHeader');
-            
-            var brewerStreetTag = document.createElement('p');
-            var brewerStreetText = document.createTextNode(data[i].street || "");
-            brewerStreetTag.appendChild(brewerStreetText);
-            brewerDivTag.appendChild(brewerStreetTag);
+          var brewerDivTag = document.createElement('div');
+          brewerDivTag.setAttribute('class',"brewerCard");
+          cardDisplay.appendChild(brewerDivTag);
           
-            var brewerCityTag = document.createElement('p');
-            var brewerCityText = document.createTextNode(data[i].city || "");
-            brewerCityTag.appendChild(brewerCityText);
-            brewerDivTag.appendChild(brewerCityTag);
+          var brewerHeadTag = document.createElement('h3');
+          var brewerHeadText = document.createTextNode(data[i].name || "");
+          brewerHeadTag.appendChild(brewerHeadText);
+          brewerDivTag.appendChild(brewerHeadTag);
+          brewerHeadTag.setAttribute('class', 'goodHeader');
+          
+          var brewerStreetTag = document.createElement('p');
+          var brewerStreetText = document.createTextNode(data[i].street || "");
+          brewerStreetTag.appendChild(brewerStreetText);
+          brewerDivTag.appendChild(brewerStreetTag);
+        
+          var brewerCityTag = document.createElement('p');
+          var brewerCityText = document.createTextNode(data[i].city || "");
+          brewerCityTag.appendChild(brewerCityText);
+          brewerDivTag.appendChild(brewerCityTag);
 
+          if(data[i].phone !== null){
             var brewerPhoneRaw = data[i].phone;
-            console.log("Declared "+ data[i].phone+" as brewerphone");
-
             var brewerPhone1 = brewerPhoneRaw.substr(0,3);
             var brewerPhone2 = brewerPhoneRaw.substr(3,3);
             var brewerPhone3 = brewerPhoneRaw.substr(6,4);
@@ -533,18 +530,18 @@ function yesilikeabeer(){
             linkTag.setAttribute('value', `${data[i].website_url}`);
             linkTag.setAttribute('href',`${data[i].website_url}`);
             linkTag.setAttribute('target', "_blank");
-            console.log(linkTag.value);
 
             linkTag.appendChild(brewerUrlTag);
             brewerDivTag.appendChild(linkTag);
-
+          }
         }
-          
-        }
+        
       })
     }
-  })
+  
+})
 }
+
 
 function nahbeerznasty(){
   var container = document.getElementById('main');
