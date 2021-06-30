@@ -154,6 +154,7 @@ function noResponse(){
   main.innerHTML = "";
   var header = document.createElement('div');
   header.setAttribute('id','header');
+  console.log("OHIO STATE MUST BE DESTROYED.");
 
   var titleTag = document.createElement('h1');
   var titleText = document.createTextNode('Seriously? Well, same to you!');
