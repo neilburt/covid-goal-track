@@ -1,6 +1,6 @@
 var userinput
 var apiNum
-
+// this magnificent column determines the county FIPS code from ZIP code input
 function zipLookup(){
     let requestUrl3 = `https://api.covidactnow.org/v2/counties.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;    
       var userZip = document.getElementById('zipLoad').innerHTML;
@@ -2118,7 +2118,7 @@ function zipLookup(){
         }else{
             errormessage();
         }
-
+        // displays county-level COVID-19 statistics based on ZIP code input via COVID Act Now API
         let countyData = stateData.filter( item => item.fips == apiNum )[0];
 
         var zipDisplay = document.getElementById('main');
@@ -2145,7 +2145,6 @@ function zipLookup(){
         zipDisplay.appendChild(pctInitTag);
 
         var percent2 = (countyData.metrics.vaccinationsCompletedRatio*100).toFixed(1);
-        // percentPass = percent2*100+"%";
         var pctCompTag = document.createElement('p');
         var pctCompText = document.createTextNode("Completed vaccination: "+percent2+"%");
         pctCompTag.appendChild(pctCompText);
@@ -2160,7 +2159,7 @@ function zipLookup(){
         var intText = document.createTextNode(parseFloat(vacsLeft).toLocaleString()+" people in "+countyData.county+" remain to be vaccinated by the 4th to meet the Presidential goal.");
         intTag.appendChild(intText);
         zipDisplay.appendChild(intTag);
-
+        // user can answer whether they've been vaccinated or not
         var formDiv = document.createElement('form');
         zipDisplay.appendChild(formDiv);
         
@@ -2184,7 +2183,7 @@ function zipLookup(){
         formDiv.appendChild(noButton);
     })
 }
-
+// performs error handling with image if ZIP code is not recognized as Minnesotan
 function errormessage (){
     var main = document.getElementById('main');
     main.innerHTML="";
@@ -2204,11 +2203,12 @@ function errormessage (){
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
       main.innerHTML="";
+
       errormessage2();
     }
   }, 1000);     
 }
-
+// tells user why they received the error message
 function errormessage2 (){
     var main = document.getElementById('main');
     main.innerHTML="";
@@ -2230,5 +2230,4 @@ function errormessage2 (){
       main.innerHTML="";
       landingScreen();
     }
-  }, 1000);     
-}
+  }, 1000);
