@@ -3,7 +3,7 @@ var statesTotal = 0;
 var apiKey = "";
 var zipGlobal ="";
 var zipList ="";
-
+// renders front page of site
 function landingScreen(){
     stateCounts =[];
     statesTotal = 0;
@@ -20,7 +20,7 @@ function landingScreen(){
 }
 
 landingScreen();
-
+// calls COVID Act Now API for larger scale, front page statistics
 function getApiState() {
       let requestUrl2 = `https://api.covidactnow.org/v2/states.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
       fetch(requestUrl2)
@@ -58,7 +58,7 @@ function getApiState() {
                 loadForm();
         })
 }
-
+// renders ZIP code entry on front page
 function loadForm(){
     var formContainer = document.getElementById('main');
     var formDeclare = document.createElement('form');
@@ -82,7 +82,7 @@ function loadForm(){
     formDeclare.appendChild(submitButton);
     formContainer.appendChild(formDeclare);   
 }
-
+// handles submission and display of user ZIP code
 function submitZIP(){
   var zipInput = document.getElementById('zipInput');
   zipGlobal = zipInput.value;
@@ -99,7 +99,7 @@ function submitZIP(){
   formAdd.appendChild(h1Tag);
   zipLookup();
 }
-
+// renders page in the event of user responding 'yes' to vaccination question
 function yesResponse(){
   var userZip = document.getElementById('zipInput');
   var containerF = document.getElementById('main');
@@ -129,7 +129,7 @@ function yesResponse(){
   var questionText = document.createTextNode('...Like a beer, do you?')
   questionTag.appendChild(questionText);
   containerF.appendChild(questionTag);
-
+  // renders question of whether user likes beer or not via button-click
   var buttonContainer = document.createElement('form');
   buttonContainer.setAttribute('id','buttoncontainer');
   var yesButton = document.createElement('input');
@@ -148,7 +148,7 @@ function yesResponse(){
   buttonContainer.appendChild(noButton);
   containerF.appendChild(buttonContainer);
 }
-
+// renders page in the event of user responding 'no' to vaccination question
 function noResponse(){
   var main = document.getElementById('main');
   main.innerHTML = "";
@@ -220,7 +220,7 @@ function noResponse(){
 
   dunkOnyaJethro()
 }
-
+// handmade random insult generator
 function dunkOnyaJethro(){
   var randomString = [
     {
@@ -291,7 +291,7 @@ function dunkOnyaJethro(){
   insultSelect = randomString[index].burn;
   setTime();
 }
-
+// timers used to set-up when insult and subsequent gif image appears
 function setTime() {
   var secondsLeft = 5;
   var timerInterval = setInterval(function() {
@@ -315,7 +315,7 @@ function setTime2() {
     }
   }, 1000);
 }
-
+// random insult preface
 function sendMessage() {
   var main = document.getElementById("main");
   var divSwitcher = document.getElementById('divSwitcher');
@@ -327,7 +327,7 @@ function sendMessage() {
   main.appendChild(eatItJerkTag);
   setTime2();
 }
-
+// renders random gif image to complement insult and links gif image to Rickroll
 function sendMessage2() {
   var divSwitcher = document.getElementById('videoswitcher');
   divSwitcher.innerHTML ="";
@@ -335,7 +335,7 @@ function sendMessage2() {
   
   var gifTag = document.createElement('a');
     gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
-  
+  // handmade random gif generator
   var randomBurnGif = [
     {
       textInd: 1,
@@ -433,7 +433,7 @@ function sendMessage2() {
     gifTag.appendChild(gifSelect);
     main.appendChild(gifTag);
 }
-
+// renders reward screen for 'yes's to vaccine and beer ?'s
 function yesilikeabeer(){
   var main = document.getElementById('main');
   main.innerHTML = "";
@@ -474,7 +474,7 @@ function yesilikeabeer(){
         console.log(response);
       })
       .then(function(data){
-        
+        // renders cards with nearby brewery information via Open Brewery and ZIP Code Base API's
         for(let i=0; i<data.length; i++){
           
           var brewerDivTag = document.createElement('div');
@@ -528,7 +528,7 @@ function yesilikeabeer(){
   
 })
 }
-
+// renders page for users who respond 'no' to beer and provides a random compliment
 function nahbeerznasty(){
   var container = document.getElementById('main');
   container.innerHTML = "";
@@ -563,7 +563,7 @@ function nahbeerznasty(){
 
   var attaboyTag = document.createElement('a');
     attaboyTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
-  
+  // handmade random compliment generator
   var randomAttaboy = [
     {
       textInd: 1,
