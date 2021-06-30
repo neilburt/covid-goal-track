@@ -2116,6 +2116,8 @@ function zipLookup(){
             apiNum =27141;
         }else if(userZip==55992){
             apiNum =27049;
+        }else{
+            errormessage();
         }
 
         let countyData = stateData.filter( item => item.fips == apiNum )[0];
@@ -2184,4 +2186,29 @@ function zipLookup(){
 
 })
    
+}
+
+function errormessage (){
+    var main = document.getElementById('main');
+    main.innerHTML="";
+    
+    var errorTag = document.createElement('img');
+      errorTag.setAttribute('src','./assets/images/21_error.gif');
+      errorTag.setAttribute('id','ohno');
+      errorTag.setAttribute('alt','yer lost, mang!');
+      errorTag.setAttribute('height','100%');
+      errorTag.setAttribute('width','100%');
+      main.appendChild(errorTag);
+
+    var secondsLeft = 3;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      main.innerHTML="";
+      landingScreen();
+    }
+  }, 1000);
+      
 }

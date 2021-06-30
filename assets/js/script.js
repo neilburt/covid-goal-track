@@ -161,6 +161,15 @@ function noResponse(){
   divSwitcher.setAttribute('id','videoswitcher');
   main.appendChild(divSwitcher);
   
+  var yesHeIz = document.createElement('img');
+    yesHeIz.setAttribute('src','./assets/images/yesAlex.jpg')
+    yesHeIz.setAttribute('id','yesheiz');
+    yesHeIz.setAttribute('alt','Eat it, rube!');
+    yesHeIz.setAttribute('style','width:35%;height:35%');
+    yesHeIz.setAttribute('style','position:absolute');
+    yesHeIz.setAttribute('style','display:none');
+    divSwitcher.appendChild(yesHeIz);
+
   var introTag = document.createElement('h4');
   var introText = document.createTextNode("That's not too cool, brutha'. In the name of citizenship, good taste, and the memory of the late great Herman Cain, you really ought to reconsider this particular life choice you've made. ");
   introTag.appendChild(introText);
@@ -187,6 +196,14 @@ function noResponse(){
   linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
   linkAnchorTag2.setAttribute('target', "_blank");
   linkAnchorTag2.setAttribute('class','infoLinx');
+  linkAnchorTag2.addEventListener('mouseover', function(){
+    yesHeIz.setAttribute('style','display:absolute');
+  })
+  linkAnchorTag2.addEventListener('mouseout',function(){
+    yesHeIz.setAttribute('style','display:none');
+  })
+
+
   divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
   var link2Text = document.createTextNode("Is Alex Jones full of shit?");
@@ -319,7 +336,7 @@ function sendMessage2() {
 
   
   var gifTag = document.createElement('a');
-    gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley&allow=autoplay');
+    gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
   
   var randomBurnGif = [
     {
@@ -414,7 +431,7 @@ function sendMessage2() {
     var gifSelect = document.createElement('img');
     gifSelect.setAttribute('src', insultGif);
     gifSelect.setAttribute('alt','Eat it, rube!');
-    gifSelect.setAttribute('style','width:80%;height:80%;');
+    gifSelect.setAttribute('style','width:85%;height:80%;');
   
     gifTag.appendChild(gifSelect);
     main.appendChild(gifTag);
@@ -545,7 +562,7 @@ function nahbeerznasty(){
   main.appendChild(linkTag);
 
   var attaboyTag = document.createElement('a');
-    attaboyTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley&allow=autoplay');
+    attaboyTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
   
   var randomAttaboy = [
     {
@@ -622,12 +639,12 @@ function nahbeerznasty(){
     },
     {
       textInd: 19,
-      attaboy: "Americans in all their vast dispersal throughout space and time agree on this one this among many others: it's exactly for folks just like you that Europeans stole the holy living Jesus out of this entire continent in the first place. Thanks for helping make their labour count, fellow squatter, and keep up the good work!"
+      attaboy: "Americans in all their vast dispersal throughout space and time agree on this one thing among many others: it's exactly for folks just like you that Europeans stole the holy living Jesus out of this entire continent in the first place. Thanks for helping make their labour count, fellow squatter, and keep up the good work!"
     },
     {
       textInd: 20,
       attaboy: "Wow-EE, thanks a bazillion! Maybe we'll all get to go outside again soon, and breathe in good fresh air without worrying that we're all gonna' drop dead!"
-    },
+    }
   ]
     
     for(i=0; i<randomAttaboy.length-1; i++){
