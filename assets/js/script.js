@@ -512,11 +512,18 @@ function yesilikeabeer(){
             brewerCityTag.appendChild(brewerCityText);
             brewerDivTag.appendChild(brewerCityTag);
 
+            var brewerPhoneRaw = data[i].phone;
+            console.log("Declared "+ data[i].phone+" as brewerphone");
+
+            var brewerPhone1 = brewerPhoneRaw.substr(0,3);
+            var brewerPhone2 = brewerPhoneRaw.substr(3,3);
+            var brewerPhone3 = brewerPhoneRaw.substr(6,4);
+            var brewerPhoneConcat = "("+brewerPhone1+") "+brewerPhone2+"-"+brewerPhone3;
+            
             var brewerPhoneTag = document.createElement('p');
-            var brewerPhoneText = document.createTextNode(data[i].phone || "");
+            var brewerPhoneText = document.createTextNode(brewerPhoneConcat || "");
             brewerPhoneTag.appendChild(brewerPhoneText);
             brewerDivTag.appendChild(brewerPhoneTag);
-
 
             var linkTag = document.createElement('a');
             var brewerUrlTag = document.createElement('p');
