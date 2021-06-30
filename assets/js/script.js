@@ -220,6 +220,16 @@ function noResponse(){
   link3Tag.appendChild(link3Text);
   linkAnchorTag3.appendChild(link3Tag);
 
+  var linkAnchorTag4 = document.createElement('a');
+  linkAnchorTag4.setAttribute('href', 'https://mn.gov/covid19/vaccine/find-vaccine/locations/index.jsp');
+  linkAnchorTag4.setAttribute('target', "_blank");
+  linkAnchorTag4.setAttribute('class', 'infoLinx');
+  divSwitcher.appendChild(linkAnchorTag4);
+  var link4Tag = document.createElement('h2');
+  var link4Text = document.createTextNode("Where can I even go to get the shot?");
+  link4Tag.appendChild(link4Text);
+  linkAnchorTag4.appendChild(link4Tag);
+
   dunkOnyaJethro()
 }
 
