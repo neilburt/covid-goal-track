@@ -1,11 +1,15 @@
 var stateCounts =[];
-var statesTotal =0;
-const apiKey = "";
-var indexNum = 1400
-var zipGlobal;
-var zipList;
+var statesTotal = 0;
+var apiKey = "";
+var zipGlobal ="";
+var zipList ="";
 
 function landingScreen(){
+    stateCounts =[];
+    statesTotal = 0;
+    apiKey = "";
+    zipGlobal ="";
+    zipList ="";
     var container = document.getElementById('main');
     var landscreenHeadTag = document.createElement('h2');
     landscreenHeadTag.setAttribute('id', 'landscreenHeader');
@@ -160,15 +164,6 @@ function noResponse(){
   var divSwitcher = document.createElement('div');
   divSwitcher.setAttribute('id','videoswitcher');
   main.appendChild(divSwitcher);
-  
-  var yesHeIz = document.createElement('img');
-    yesHeIz.setAttribute('src','./assets/images/yesAlex.jpg')
-    yesHeIz.setAttribute('id','yesheiz');
-    yesHeIz.setAttribute('alt','Eat it, rube!');
-    yesHeIz.setAttribute('style','width:35%;height:35%');
-    yesHeIz.setAttribute('style','position:absolute');
-    yesHeIz.setAttribute('style','display:none');
-    divSwitcher.appendChild(yesHeIz);
 
   var introTag = document.createElement('h4');
   var introText = document.createTextNode("That's not too cool, brutha'. In the name of citizenship, good taste, and the memory of the late great Herman Cain, you really ought to reconsider this particular life choice you've made. ");
@@ -196,14 +191,7 @@ function noResponse(){
   linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
   linkAnchorTag2.setAttribute('target', "_blank");
   linkAnchorTag2.setAttribute('class','infoLinx');
-  linkAnchorTag2.addEventListener('mouseover', function(){
-    yesHeIz.setAttribute('style','display:absolute');
-  })
-  linkAnchorTag2.addEventListener('mouseout',function(){
-    yesHeIz.setAttribute('style','display:none');
-  })
-
-
+ 
   divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
   var link2Text = document.createTextNode("Is Alex Jones full of shit?");
@@ -430,7 +418,6 @@ function sendMessage2() {
       gifVar: "./assets/images/20_anchormanClassy.gif"
     },
   ]
-
     var gifPath = randomBurnGif[0].gifVar;
     
     for(var i=0; i<randomBurnGif.length-1; i++){
@@ -542,7 +529,6 @@ function yesilikeabeer(){
 })
 }
 
-
 function nahbeerznasty(){
   var container = document.getElementById('main');
   container.innerHTML = "";
@@ -653,7 +639,7 @@ function nahbeerznasty(){
     },
     {
       textInd: 19,
-      attaboy: "Americans in all their vast dispersal throughout space and time agree on this one thing among many others: it's exactly for folks just like you that Europeans stole the holy living Jesus out of this entire continent in the first place. Thanks for helping make their labour count, fellow squatter, and keep up the good work!"
+      attaboy: "Americans in all their vast dispersal throughout space and time agree on this one thing if no other: it's exactly for folks just like you that Europeans stole the holy living Jesus out of this entire continent in the first place. Thanks for helping make their labour count, fellow squatter, and keep up the good work!"
     },
     {
       textInd: 20,

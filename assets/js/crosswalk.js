@@ -1835,7 +1835,6 @@ function zipLookup(){
             apiNum =27123;
         }else if(userZip==55104){
             apiNum =27123;
-            console.log("Howdy.");
         }else if(userZip==55105){
             apiNum =27123;
         }else if(userZip==55107){
@@ -2183,9 +2182,7 @@ function zipLookup(){
         noButton.addEventListener('click',noResponse);
         noButton.setAttribute('value','NO');
         formDiv.appendChild(noButton);
-
-})
-   
+    })
 }
 
 function errormessage (){
@@ -2200,7 +2197,40 @@ function errormessage (){
       errorTag.setAttribute('width','100%');
       main.appendChild(errorTag);
 
-    var secondsLeft = 3;
+    var secondsLeft = 2;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      main.innerHTML="";
+
+    //   var redirectTag = document.createElement('img');
+    //   redirectTag.setAttribute('src','./assets/images/22_errorRedirect.jpg');
+    //   redirectTag.setAttribute('id','ohno');
+    //   redirectTag.setAttribute('alt','yer lost, mang!');
+    //   redirectTag.setAttribute('height','100%');
+    //   redirectTag.setAttribute('width','100%');
+    //   main.appendChild(redirectTag);
+    //   console.log("Leaving error1");
+      errormessage2();
+    }
+  }, 1000);     
+}
+
+function errormessage2 (){
+    var main = document.getElementById('main');
+    main.innerHTML="";
+    
+    var errorTag = document.createElement('img');
+      errorTag.setAttribute('src','./assets/images/22_errorRedirect.jpg');
+      errorTag.setAttribute('id','ohno');
+      errorTag.setAttribute('alt','yer lost, mang!');
+      errorTag.setAttribute('height','100%');
+      errorTag.setAttribute('width','100%');
+      main.appendChild(errorTag);
+
+    var secondsLeft = 2;
     var timerInterval = setInterval(function() {
     secondsLeft--;
     
@@ -2209,6 +2239,39 @@ function errormessage (){
       main.innerHTML="";
       landingScreen();
     }
-  }, 1000);
-      
+  }, 1000);     
 }
+
+function errorBump(){
+    console.log("Entering error2)");
+    var main = document.getElementById('main');
+    main.innerHTML="";
+
+    var errorTag = document.createElement('img');
+        errorTag.setAttribute('src','./assets/images/21_error.gif');
+        errorTag.setAttribute('id','ohno');
+        errorTag.setAttribute('alt','yer lost, mang!');
+        errorTag.setAttribute('height','100%');
+        errorTag.setAttribute('width','100%');
+    main.appendChild(errorTag);
+
+    var secondsLeft = 3;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    
+    if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+        main.innerHTML="";
+  
+        var redirectTag = document.createElement('img');
+        redirectTag.setAttribute('src','./assets/images/21_error.gif');
+        redirectTag.setAttribute('id','ohno');
+        redirectTag.setAttribute('alt','yer lost, mang!');
+        redirectTag.setAttribute('height','100%');
+        redirectTag.setAttribute('width','100%');
+        main.appendChild(redirectTag);
+        landingScreen();
+        
+      }
+    }, 1000);     
+}   
