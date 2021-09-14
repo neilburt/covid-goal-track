@@ -2138,7 +2138,7 @@ function zipLookup() {
             casesTag.appendChild(casesText);
             zipDisplay.appendChild(casesTag);
 
-            var percentage = countyData.metrics.vaccinationsInitiatedRatio * 100 + "%"
+            var percentage = (countyData.metrics.vaccinationsInitiatedRatio * 100).toFixed(1) + "%"
             var pctInitTag = document.createElement('p');
             var pctInitText = document.createTextNode("Initiated vaccination: " + percentage);
             pctInitTag.appendChild(pctInitText);

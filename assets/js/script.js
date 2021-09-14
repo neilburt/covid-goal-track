@@ -20,6 +20,7 @@ function landingScreen() {
 }
 
 landingScreen();
+
 // calls COVID Act Now API for larger scale, front page statistics
 function getApiState() {
   let requestUrl2 = `https://api.covidactnow.org/v2/states.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
@@ -32,7 +33,7 @@ function getApiState() {
         statesTotal += data[i].actuals.vaccinationsCompleted
       }
 
-      var pctCalc = (statesTotal / 331000000) * 100;
+      var pctCalc = (statesTotal / 331486822) * 100;
       var totalUS = Math.round(pctCalc);
       var displayTest = document.getElementById('main');
       var blurbTag = document.createElement('p');
@@ -40,8 +41,8 @@ function getApiState() {
       blurbTag.appendChild(blurbText);
       blurbTag.setAttribute('class', 'paragraph');
 
-      var shortfall = 160000000 - statesTotal
-      var totalShare = shortfall * 0.017047322;
+      var shortfall = 232040775 - statesTotal
+      var totalShare = shortfall * 0.0170131408723089;
 
       var totalShareRound = Math.round(totalShare);
       var totalShareRoundCommas = Math.round(totalShareRound);
@@ -184,7 +185,7 @@ function noResponse() {
   linkAnchorTag.setAttribute('class', 'infoLinx');
   divSwitcher.appendChild(linkAnchorTag);
   var link1Tag = document.createElement('h2');
-  var link1Text = document.createTextNode("Are vaccines safe?");
+  var link1Text = document.createTextNode("Are these vaccines safe?");
   link1Tag.appendChild(link1Text);
   linkAnchorTag.appendChild(link1Tag);
 
@@ -195,7 +196,7 @@ function noResponse() {
 
   divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
-  var link2Text = document.createTextNode("Is Alex Jones full of shit?");
+  var link2Text = document.createTextNode("Is Alex Jones full of malarkey?");
   link2Tag.appendChild(link2Text);
   linkAnchorTag2.appendChild(link2Tag);
 
@@ -230,11 +231,11 @@ function dunkOnyaJethro() {
     },
     {
       textInd: 2,
-      burn: ", 'cause vaccinated people's dicks so hot they stolen - yo dick look just like Gary Coleman."
+      burn: " since it seems like all you're good for right now is getting the mail."
     },
     {
       textInd: 3,
-      burn: ". I also heard that Yo mama's so poor, the ducks throw bread at her."
+      burn: ". I also heard that yo mama's so poor, the ducks throw bread at her."
     },
     {
       textInd: 4,
@@ -266,11 +267,11 @@ function dunkOnyaJethro() {
     },
     {
       textInd: 11,
-      burn: ". You resemble Rapunzel a bit: she lets down her hair, and you let down everyone you ever meet."
+      burn: ". You resemble Rapunzel a bit: she lets down her hair, and you let down everyone you've ever met."
     },
     {
       textInd: 12,
-      burn: " if you honestly think this kind of thing is going to fly; you're a real jerk, and you smell like farts."
+      burn: " if you honestly think this kind of thing is going to fly. You're a real jerk, and you smell like farts."
     },
     {
       textInd: 11,
@@ -282,7 +283,7 @@ function dunkOnyaJethro() {
     },
     {
       textInd: 13,
-      burn: "; lord, what a jerk you are. What did your country ever do to you? If we promise to throw you a stick, will you leave?"
+      burn: "; lord, what a jerk you are. What did your country ever do to you? If we promise to throw a stick, will you leave?"
     }
   ]
 
