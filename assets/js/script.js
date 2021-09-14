@@ -1,109 +1,109 @@
-var stateCounts =[];
+var stateCounts = [];
 var statesTotal = 0;
 var apiKey = "";
-var zipGlobal ="";
-var zipList ="";
+var zipGlobal = "";
+var zipList = "";
 // renders front page of site
-function landingScreen(){
-    stateCounts =[];
-    statesTotal = 0;
-    apiKey = "";
-    zipGlobal ="";
-    zipList ="";
-    var container = document.getElementById('main');
-    var landscreenHeadTag = document.createElement('h2');
-    landscreenHeadTag.setAttribute('id', 'landscreenHeader');
-    var landscreenHeadText = document.createTextNode('Minnesota COVID-19 Goal Tracker');
-    landscreenHeadTag.appendChild(landscreenHeadText);
-    container.appendChild(landscreenHeadTag);
-    getApiState();
+function landingScreen() {
+  stateCounts = [];
+  statesTotal = 0;
+  apiKey = "";
+  zipGlobal = "";
+  zipList = "";
+  var container = document.getElementById('main');
+  var landscreenHeadTag = document.createElement('h2');
+  landscreenHeadTag.setAttribute('id', 'landscreenHeader');
+  var landscreenHeadText = document.createTextNode('Minnesota COVID-19 Goal Tracker');
+  landscreenHeadTag.appendChild(landscreenHeadText);
+  container.appendChild(landscreenHeadTag);
+  getApiState();
 }
 
 landingScreen();
 // calls COVID Act Now API for larger scale, front page statistics
 function getApiState() {
-      let requestUrl2 = `https://api.covidactnow.org/v2/states.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
-      fetch(requestUrl2)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(data) {
-            for (var i=0; i<53; i++){
-                statesTotal += data[i].actuals.vaccinationsCompleted
-                }
+  let requestUrl2 = `https://api.covidactnow.org/v2/states.json?apiKey=6b5476d41dfb418d82fbaf1cfaa0071c`;
+  fetch(requestUrl2)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (var i = 0; i < 53; i++) {
+        statesTotal += data[i].actuals.vaccinationsCompleted
+      }
 
-                var pctCalc = (statesTotal/331000000)*100;
-                var totalUS = Math.round(pctCalc);
-                var displayTest = document.getElementById('main');
-                var blurbTag = document.createElement('p');
-                var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At our  current rate of vaccination, we will fall slightly short of this goal; those of us who want to make 2021 a summer of closeness even amid the rise of the Delta variant better campaign to get as many people vaccinated as quickly as possible.');
-                blurbTag.appendChild(blurbText);
-                blurbTag.setAttribute('class', 'paragraph');
-                
-                var shortfall = 160000000-statesTotal
-                var totalShare = shortfall*0.017047322;
-                
-                var totalShareRound = Math.round(totalShare);
-                var totalShareRoundCommas = Math.round(totalShareRound);
+      var pctCalc = (statesTotal / 331000000) * 100;
+      var totalUS = Math.round(pctCalc);
+      var displayTest = document.getElementById('main');
+      var blurbTag = document.createElement('p');
+      var blurbText = document.createTextNode('President Biden’s goal was to have 70% of adults in the US receive COVID-19 vaccinations by the Fourth of July. At our  current rate of vaccination, we will fall slightly short of this goal; those of us who want to make 2021 a summer of closeness even amid the rise of the Delta variant better campaign to get as many people vaccinated as quickly as possible.');
+      blurbTag.appendChild(blurbText);
+      blurbTag.setAttribute('class', 'paragraph');
 
-                var p1Tag = document.createElement('p'); // added ".toLocaleString()" methods to large numbers needing comma-notation below -Neil
-                var p1Text =document.createTextNode("Currently, only "+totalUS+" percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that "+shortfall.toLocaleString()+" Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So "+totalShareRound.toLocaleString()+" Minnesotans need to show their dumb faces at a vaccination site like RIGHT NOW or we'll have to eat a share of the blame for whatever resulting disgrace befalls us.");
-                p1Tag.appendChild(p1Text);
-                p1Tag.setAttribute('class', 'paragraph');
+      var shortfall = 160000000 - statesTotal
+      var totalShare = shortfall * 0.017047322;
 
-                var mainScreen = document.getElementById('main');
+      var totalShareRound = Math.round(totalShare);
+      var totalShareRoundCommas = Math.round(totalShareRound);
 
-                mainScreen.appendChild(blurbTag);
-                mainScreen.appendChild(p1Tag);
-                loadForm();
-        })
+      var p1Tag = document.createElement('p'); // added ".toLocaleString()" methods to large numbers needing comma-notation below -Neil
+      var p1Text = document.createTextNode("Currently, only " + totalUS + " percent of Americans are vaccinated, but at LEAST half of us are ugly. This means that " + shortfall.toLocaleString() + " Americans need to be vaccinated by the 4th or President Biden will cry. Which is obviously unacceptable. So " + totalShareRound.toLocaleString() + " Minnesotans need to show their dumb faces at a vaccination site like RIGHT NOW or we'll have to eat a share of the blame for whatever resulting disgrace befalls us.");
+      p1Tag.appendChild(p1Text);
+      p1Tag.setAttribute('class', 'paragraph');
+
+      var mainScreen = document.getElementById('main');
+
+      mainScreen.appendChild(blurbTag);
+      mainScreen.appendChild(p1Tag);
+      loadForm();
+    })
 }
 // renders ZIP code entry on front page
-function loadForm(){
-    var formContainer = document.getElementById('main');
-    var formDeclare = document.createElement('form');
-    var formtextTag = document.createElement('h2');
-    var formtextText = document.createTextNode('Please enter your ZIP code:')
-    formtextTag.appendChild(formtextText);
-    formDeclare.setAttribute('class', 'center');
-    var zipEntry = document.createElement('input');
-    zipEntry.setAttribute('type','text');
-    zipEntry.setAttribute('maxLength',5);
-    zipEntry.setAttribute('id','zipInput')
-    var submitButton = document.createElement('input');
-    submitButton.setAttribute('type','button');
-    submitButton.setAttribute('id', 'code');
-    submitButton.setAttribute('cols',10);
-    submitButton.setAttribute('rows',1);
-    submitButton.setAttribute('value','submit');
-    submitButton.addEventListener("click",submitZIP);
-    formDeclare.appendChild(formtextTag);
-    formDeclare.appendChild(zipEntry);
-    formDeclare.appendChild(submitButton);
-    formContainer.appendChild(formDeclare);   
+function loadForm() {
+  var formContainer = document.getElementById('main');
+  var formDeclare = document.createElement('form');
+  var formtextTag = document.createElement('h2');
+  var formtextText = document.createTextNode('Please enter your ZIP code:')
+  formtextTag.appendChild(formtextText);
+  formDeclare.setAttribute('class', 'center');
+  var zipEntry = document.createElement('input');
+  zipEntry.setAttribute('type', 'text');
+  zipEntry.setAttribute('maxLength', 5);
+  zipEntry.setAttribute('id', 'zipInput')
+  var submitButton = document.createElement('input');
+  submitButton.setAttribute('type', 'button');
+  submitButton.setAttribute('id', 'code');
+  submitButton.setAttribute('cols', 10);
+  submitButton.setAttribute('rows', 1);
+  submitButton.setAttribute('value', 'submit');
+  submitButton.addEventListener("click", submitZIP);
+  formDeclare.appendChild(formtextTag);
+  formDeclare.appendChild(zipEntry);
+  formDeclare.appendChild(submitButton);
+  formContainer.appendChild(formDeclare);
 }
 // handles submission and display of user ZIP code
-function submitZIP(){
+function submitZIP() {
   var zipInput = document.getElementById('zipInput');
   zipGlobal = zipInput.value;
   var userZIP = zipInput.value;
-  zipInput.value ="";
+  zipInput.value = "";
 
   var formAdd = document.getElementById('main');
-  formAdd.innerHTML="";
+  formAdd.innerHTML = "";
 
   var h1Tag = document.createElement('h1');
-  h1Tag.setAttribute('id','zipLoad');
+  h1Tag.setAttribute('id', 'zipLoad');
   var h1Text = document.createTextNode(userZIP);
   h1Tag.appendChild(h1Text);
   formAdd.appendChild(h1Tag);
   zipLookup();
 }
 // renders page in the event of user responding 'yes' to vaccination question
-function yesResponse(){
+function yesResponse() {
   var userZip = document.getElementById('zipInput');
   var containerF = document.getElementById('main');
-  containerF.innerHTML ="";
+  containerF.innerHTML = "";
 
   var yesLandingTag = document.createElement('h1')
   var yesLandingText = document.createTextNode("Word? Nice! Thanks for being part of the solution!");
@@ -119,7 +119,7 @@ function yesResponse(){
   containerF.appendChild(linkIntroTag);
 
   var linkTag = document.createElement('a');
-  linkTag.setAttribute('href','https://mn.gov/covid19/vaccine-rewards/index.jsp');
+  linkTag.setAttribute('href', 'https://mn.gov/covid19/vaccine-rewards/index.jsp');
   linkTag.setAttribute('target', "_blank");
   var linkText = document.createTextNode('https://mn.gov/covid19/vaccine-rewards/index.jsp');
   linkTag.appendChild(linkText);
@@ -131,16 +131,16 @@ function yesResponse(){
   containerF.appendChild(questionTag);
   // renders question of whether user likes beer or not via button-click
   var buttonContainer = document.createElement('form');
-  buttonContainer.setAttribute('id','buttoncontainer');
+  buttonContainer.setAttribute('id', 'buttoncontainer');
   var yesButton = document.createElement('input');
-  yesButton.setAttribute('type','button');
-  yesButton.setAttribute('value','Sure I do.');
+  yesButton.setAttribute('type', 'button');
+  yesButton.setAttribute('value', 'Sure I do.');
   yesButton.setAttribute('id', 'yesBeer');
   yesButton.addEventListener("click", yesilikeabeer);
 
   var noButton = document.createElement('input');
-  noButton.setAttribute('type','button');
-  noButton.setAttribute('value','Not Particularly...');
+  noButton.setAttribute('type', 'button');
+  noButton.setAttribute('value', 'Not Particularly...');
   noButton.setAttribute('id', 'noBeer');
   noButton.addEventListener("click", nahbeerznasty);
 
@@ -149,11 +149,11 @@ function yesResponse(){
   containerF.appendChild(buttonContainer);
 }
 // renders page in the event of user responding 'no' to vaccination question
-function noResponse(){
+function noResponse() {
   var main = document.getElementById('main');
   main.innerHTML = "";
   var header = document.createElement('div');
-  header.setAttribute('id','header');
+  header.setAttribute('id', 'header');
   console.log("OHIO STATE MUST BE DESTROYED.");
 
   var titleTag = document.createElement('h1');
@@ -163,7 +163,7 @@ function noResponse(){
   header.appendChild(titleTag);
 
   var divSwitcher = document.createElement('div');
-  divSwitcher.setAttribute('id','videoswitcher');
+  divSwitcher.setAttribute('id', 'videoswitcher');
   main.appendChild(divSwitcher);
 
   var introTag = document.createElement('h4');
@@ -179,9 +179,9 @@ function noResponse(){
   divSwitcher.appendChild(introTag2);
 
   var linkAnchorTag = document.createElement('a');
-  linkAnchorTag.setAttribute('href','https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
+  linkAnchorTag.setAttribute('href', 'https://www.cdc.gov/coronavirus/2019-ncov/vaccines/safety.html');
   linkAnchorTag.setAttribute('target', "_blank");
-  linkAnchorTag.setAttribute('class','infoLinx');
+  linkAnchorTag.setAttribute('class', 'infoLinx');
   divSwitcher.appendChild(linkAnchorTag);
   var link1Tag = document.createElement('h2');
   var link1Text = document.createTextNode("Are vaccines safe?");
@@ -189,10 +189,10 @@ function noResponse(){
   linkAnchorTag.appendChild(link1Tag);
 
   var linkAnchorTag2 = document.createElement('a');
-  linkAnchorTag2.setAttribute('href','https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
+  linkAnchorTag2.setAttribute('href', 'https://www.youtube.com/watch?v=WyGq6cjcc3Q&ab_channel=LastWeekTonight');
   linkAnchorTag2.setAttribute('target', "_blank");
-  linkAnchorTag2.setAttribute('class','infoLinx');
- 
+  linkAnchorTag2.setAttribute('class', 'infoLinx');
+
   divSwitcher.appendChild(linkAnchorTag2);
   var link2Tag = document.createElement('h2');
   var link2Text = document.createTextNode("Is Alex Jones full of shit?");
@@ -200,9 +200,9 @@ function noResponse(){
   linkAnchorTag2.appendChild(link2Tag);
 
   var linkAnchorTag3 = document.createElement('a');
-  linkAnchorTag3.setAttribute('href','https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
+  linkAnchorTag3.setAttribute('href', 'https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm');
   linkAnchorTag3.setAttribute('target', "_blank");
-  linkAnchorTag3.setAttribute('class','infoLinx');
+  linkAnchorTag3.setAttribute('class', 'infoLinx');
   divSwitcher.appendChild(linkAnchorTag3);
   var link3Tag = document.createElement('h2');
   var link3Text = document.createTextNode("How many people have actually died from this thing?");
@@ -222,12 +222,12 @@ function noResponse(){
   dunkOnyaJethro()
 }
 // handmade random insult generator
-function dunkOnyaJethro(){
+function dunkOnyaJethro() {
   var randomString = [
     {
       textInd: 1,
       burn: "; your mother was a hamster, and your father smelt of elberberries."
-    },  
+    },
     {
       textInd: 2,
       burn: ", 'cause vaccinated people's dicks so hot they stolen - yo dick look just like Gary Coleman."
@@ -286,8 +286,8 @@ function dunkOnyaJethro(){
     }
   ]
 
-  for(i=0; i<randomString.length-1; i++){
-    var index=Math.floor(Math.random() * randomString.length);
+  for (i = 0; i < randomString.length - 1; i++) {
+    var index = Math.floor(Math.random() * randomString.length);
   }
   insultSelect = randomString[index].burn;
   setTime();
@@ -295,10 +295,10 @@ function dunkOnyaJethro(){
 // timers used to set-up when insult and subsequent gif image appears
 function setTime() {
   var secondsLeft = 5;
-  var timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function () {
     secondsLeft--;
-    
-    if(secondsLeft === 0) {
+
+    if (secondsLeft === 0) {
       clearInterval(timerInterval);
       sendMessage();
     }
@@ -307,10 +307,10 @@ function setTime() {
 
 function setTime2() {
   var secondsLeft = 10;
-  var timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function () {
     secondsLeft--;
-    
-    if(secondsLeft === 0) {
+
+    if (secondsLeft === 0) {
       clearInterval(timerInterval);
       sendMessage2();
     }
@@ -321,7 +321,7 @@ function sendMessage() {
   var main = document.getElementById("main");
   var divSwitcher = document.getElementById('divSwitcher');
   var eatItJerkTag = document.createElement("h3");
-  var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life"+insultSelect);
+  var eatItJerkText = document.createTextNode("You really, REALLY need to rethink your whole approach to life" + insultSelect);
   eatItJerkTag.appendChild(eatItJerkText);
 
   eatItJerkTag.setAttribute('class', "jerkText");
@@ -331,11 +331,11 @@ function sendMessage() {
 // renders random gif image to complement insult and links gif image to Rickroll
 function sendMessage2() {
   var divSwitcher = document.getElementById('videoswitcher');
-  divSwitcher.innerHTML ="";
+  divSwitcher.innerHTML = "";
 
-  
+
   var gifTag = document.createElement('a');
-    gifTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
+  gifTag.setAttribute('href', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
   // handmade random gif generator
   var randomBurnGif = [
     {
@@ -419,27 +419,27 @@ function sendMessage2() {
       gifVar: "./assets/images/20_anchormanClassy.gif"
     },
   ]
-    var gifPath = randomBurnGif[0].gifVar;
-    
-    for(var i=0; i<randomBurnGif.length-1; i++){
-      var index=Math.floor(Math.random() * randomBurnGif.length);
-    }
-    var insultGif = randomBurnGif[index].gifVar;
-  
-    var gifSelect = document.createElement('img');
-    gifSelect.setAttribute('src', insultGif);
-    gifSelect.setAttribute('alt','Eat it, rube!');
-    gifSelect.setAttribute('style','width:85%;height:80%;');
-  
-    gifTag.appendChild(gifSelect);
-    main.appendChild(gifTag);
+  var gifPath = randomBurnGif[0].gifVar;
+
+  for (var i = 0; i < randomBurnGif.length - 1; i++) {
+    var index = Math.floor(Math.random() * randomBurnGif.length);
+  }
+  var insultGif = randomBurnGif[index].gifVar;
+
+  var gifSelect = document.createElement('img');
+  gifSelect.setAttribute('src', insultGif);
+  gifSelect.setAttribute('alt', 'Eat it, rube!');
+  gifSelect.setAttribute('style', 'width:85%;height:80%;');
+
+  gifTag.appendChild(gifSelect);
+  main.appendChild(gifTag);
 }
 // renders reward screen for 'yes's to vaccine and beer ?'s
-function yesilikeabeer(){
+function yesilikeabeer() {
   var main = document.getElementById('main');
   main.innerHTML = "";
   var header = document.createElement('div');
-  header.setAttribute('id','header');
+  header.setAttribute('id', 'header');
 
   var titleTag = document.createElement('h1');
   var titleText = document.createTextNode('...well, of COURSE you like a beer!')
@@ -454,88 +454,88 @@ function yesilikeabeer(){
   main.appendChild(introTag);
 
   var cardDisplay = document.createElement('div');
-  cardDisplay.setAttribute('id','cardContainer');
+  cardDisplay.setAttribute('id', 'cardContainer');
   main.appendChild(cardDisplay);
 
   let request5 = `https://app.zipcodebase.com/api/v1/radius?apikey=1578b6e0-d5ef-11eb-b9b2-2b8eceeea297&code=${zipGlobal}&radius=5&country=us&unit=miles`;
   fetch(request5)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data){
-    var beerList = data.results;
-    
-    for(var i=0; i<beerList.length; i++){
-      zipList = data.results[i].code;
-      
-      let request6 = `https://api.openbrewerydb.org/breweries?by_postal=${zipList}`;
-      fetch(request6)
-      .then(function(response){
-        return response.json();
-        console.log(response);
-      })
-      .then(function(data){
-        // renders cards with nearby brewery information via Open Brewery and ZIP Code Base API's
-        for(let i=0; i<data.length; i++){
-          
-          var brewerDivTag = document.createElement('div');
-          brewerDivTag.setAttribute('class',"brewerCard");
-          cardDisplay.appendChild(brewerDivTag);
-          
-          var brewerHeadTag = document.createElement('h3');
-          var brewerHeadText = document.createTextNode(data[i].name || "");
-          brewerHeadTag.appendChild(brewerHeadText);
-          brewerDivTag.appendChild(brewerHeadTag);
-          brewerHeadTag.setAttribute('class', 'goodHeader');
-          
-          var brewerStreetTag = document.createElement('p');
-          var brewerStreetText = document.createTextNode(data[i].street || "");
-          brewerStreetTag.appendChild(brewerStreetText);
-          brewerDivTag.appendChild(brewerStreetTag);
-        
-          var brewerCityTag = document.createElement('p');
-          var brewerCityText = document.createTextNode(data[i].city || "");
-          brewerCityTag.appendChild(brewerCityText);
-          brewerDivTag.appendChild(brewerCityTag);
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var beerList = data.results;
 
-          if(data[i].phone !== null){
-            var brewerPhoneRaw = data[i].phone;
-            var brewerPhone1 = brewerPhoneRaw.substr(0,3);
-            var brewerPhone2 = brewerPhoneRaw.substr(3,3);
-            var brewerPhone3 = brewerPhoneRaw.substr(6,4);
-            var brewerPhoneConcat = "("+brewerPhone1+") "+brewerPhone2+"-"+brewerPhone3;
-            
-            var brewerPhoneTag = document.createElement('p');
-            var brewerPhoneText = document.createTextNode(brewerPhoneConcat || "");
-            brewerPhoneTag.appendChild(brewerPhoneText);
-            brewerDivTag.appendChild(brewerPhoneTag);
+      for (var i = 0; i < beerList.length; i++) {
+        zipList = data.results[i].code;
 
-            var linkTag = document.createElement('a');
-            var brewerUrlTag = document.createElement('p');
-            var brewerUrlText = document.createTextNode(data[i].website_url || "");
-            brewerUrlTag.appendChild(brewerUrlText);
-            brewerUrlTag.setAttribute('class', "brewLinkText");
-            linkTag.setAttribute('value', `${data[i].website_url}`);
-            linkTag.setAttribute('href',`${data[i].website_url}`);
-            linkTag.setAttribute('target', "_blank");
+        let request6 = `https://api.openbrewerydb.org/breweries?by_postal=${zipList}`;
+        fetch(request6)
+          .then(function (response) {
+            return response.json();
+            console.log(response);
+          })
+          .then(function (data) {
+            // renders cards with nearby brewery information via Open Brewery and ZIP Code Base API's
+            for (let i = 0; i < data.length; i++) {
 
-            linkTag.appendChild(brewerUrlTag);
-            brewerDivTag.appendChild(linkTag);
-          }
-        }
-        
-      })
-    }
-  
-})
+              var brewerDivTag = document.createElement('div');
+              brewerDivTag.setAttribute('class', "brewerCard");
+              cardDisplay.appendChild(brewerDivTag);
+
+              var brewerHeadTag = document.createElement('h3');
+              var brewerHeadText = document.createTextNode(data[i].name || "");
+              brewerHeadTag.appendChild(brewerHeadText);
+              brewerDivTag.appendChild(brewerHeadTag);
+              brewerHeadTag.setAttribute('class', 'goodHeader');
+
+              var brewerStreetTag = document.createElement('p');
+              var brewerStreetText = document.createTextNode(data[i].street || "");
+              brewerStreetTag.appendChild(brewerStreetText);
+              brewerDivTag.appendChild(brewerStreetTag);
+
+              var brewerCityTag = document.createElement('p');
+              var brewerCityText = document.createTextNode(data[i].city || "");
+              brewerCityTag.appendChild(brewerCityText);
+              brewerDivTag.appendChild(brewerCityTag);
+
+              if (data[i].phone !== null) {
+                var brewerPhoneRaw = data[i].phone;
+                var brewerPhone1 = brewerPhoneRaw.substr(0, 3);
+                var brewerPhone2 = brewerPhoneRaw.substr(3, 3);
+                var brewerPhone3 = brewerPhoneRaw.substr(6, 4);
+                var brewerPhoneConcat = "(" + brewerPhone1 + ") " + brewerPhone2 + "-" + brewerPhone3;
+
+                var brewerPhoneTag = document.createElement('p');
+                var brewerPhoneText = document.createTextNode(brewerPhoneConcat || "");
+                brewerPhoneTag.appendChild(brewerPhoneText);
+                brewerDivTag.appendChild(brewerPhoneTag);
+
+                var linkTag = document.createElement('a');
+                var brewerUrlTag = document.createElement('p');
+                var brewerUrlText = document.createTextNode(data[i].website_url || "");
+                brewerUrlTag.appendChild(brewerUrlText);
+                brewerUrlTag.setAttribute('class', "brewLinkText");
+                linkTag.setAttribute('value', `${data[i].website_url}`);
+                linkTag.setAttribute('href', `${data[i].website_url}`);
+                linkTag.setAttribute('target', "_blank");
+
+                linkTag.appendChild(brewerUrlTag);
+                brewerDivTag.appendChild(linkTag);
+              }
+            }
+
+          })
+      }
+
+    })
 }
 // renders page for users who respond 'no' to beer and provides a random compliment
-function nahbeerznasty(){
+function nahbeerznasty() {
   var container = document.getElementById('main');
   container.innerHTML = "";
 
   var header = document.createElement('div');
-  header.setAttribute('id','header');
+  header.setAttribute('id', 'header');
 
   var titleTag = document.createElement('h1');
   var titleText = document.createTextNode("Don't like beer, eh?");
@@ -550,20 +550,20 @@ function nahbeerznasty(){
   main.appendChild(introTag);
 
   var linkTag = document.createElement('a');
-  
+
   linkTag.setAttribute("value", "https://www.atlasobscura.com/things-to-do/minnesota");
-  
-  linkTag.setAttribute('href','');
+
+  linkTag.setAttribute('href', '');
   main.appendChild(linkTag);
-  
-  linkTag.setAttribute('href','https://www.atlasobscura.com/things-to-do/minnesota');
+
+  linkTag.setAttribute('href', 'https://www.atlasobscura.com/things-to-do/minnesota');
   linkTag.setAttribute('target', "_blank");
   var linkText = document.createTextNode('https://www.atlasobscura.com/things-to-do/minnesota');
   linkTag.appendChild(linkText);
   main.appendChild(linkTag);
 
   var attaboyTag = document.createElement('a');
-    attaboyTag.setAttribute('href','https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
+  attaboyTag.setAttribute('href', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO');
   // handmade random compliment generator
   var randomAttaboy = [
     {
@@ -647,15 +647,15 @@ function nahbeerznasty(){
       attaboy: "Wow-EE, thanks a bazillion! Maybe we'll all get to go outside again soon, and breathe in good fresh air without worrying that we're all gonna' drop dead!"
     }
   ]
-    
-    for(i=0; i<randomAttaboy.length-1; i++){
-      var index=Math.floor(Math.random() * randomAttaboy.length);
-    }
-    attaboySelect = randomAttaboy[index].attaboy;
-    
-    var attaboySelectTag = document.createElement('h3');
-    var attaboySelectText = document.createTextNode(attaboySelect);
-    attaboySelectTag.appendChild(attaboySelectText);
-    attaboyTag.appendChild(attaboySelectTag);
-    main.appendChild(attaboyTag);
+
+  for (i = 0; i < randomAttaboy.length - 1; i++) {
+    var index = Math.floor(Math.random() * randomAttaboy.length);
+  }
+  attaboySelect = randomAttaboy[index].attaboy;
+
+  var attaboySelectTag = document.createElement('h3');
+  var attaboySelectText = document.createTextNode(attaboySelect);
+  attaboySelectTag.appendChild(attaboySelectText);
+  attaboyTag.appendChild(attaboySelectTag);
+  main.appendChild(attaboyTag);
 }
